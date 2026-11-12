@@ -1,0 +1,540 @@
+
+/* ========================================
+   ABOUT PAGE — SANIA
+   ======================================== */
+
+.about-page {
+  width: 100%;
+  overflow: clip;
+}
+
+.about-page,
+.about-page * {
+  box-sizing: border-box;
+}
+
+.about-page section[id] {
+  scroll-margin-top: 90px;
+}
+
+/* INTRODUCTION */
+
+.about-intro {
+  padding: 90px 24px 70px;
+  text-align: center;
+  background: linear-gradient(
+    145deg,
+    #fff8fc 0%,
+    #f9f1ff 55%,
+    #fff7fb 100%
+  );
+}
+
+.about-eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--purple);
+  margin: 0 0 18px;
+}
+
+.about-intro h1,
+.about-section h2 {
+  font-family: var(--font-title);
+  color: var(--purple-dark);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.about-intro h1 {
+  font-size: clamp(2.6rem, 5vw, 4rem);
+  margin: 0 0 22px;
+}
+
+.about-intro-description {
+  max-width: 620px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text);
+}
+
+/* STICKY NAVIGATION */
+
+.about-subnav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding: 17px 24px;
+  background: rgba(255, 248, 252, 0.96);
+  backdrop-filter: blur(14px);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.about-subnav a {
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.84rem;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.about-subnav a:hover,
+.about-subnav a:focus-visible {
+  color: var(--purple-dark);
+}
+
+/* SHARED SECTIONS */
+
+.about-section {
+  padding: 105px 7%;
+}
+
+.about-section-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.about-section h2 {
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  margin: 0 0 28px;
+}
+
+.about-split {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 75px;
+  align-items: center;
+}
+
+.about-text p {
+  font-size: 1.04rem;
+  line-height: 1.95;
+  color: var(--text);
+  margin: 0 0 20px;
+}
+
+.about-signature {
+  display: inline-block;
+  margin-top: 12px;
+  font-family: var(--font-title);
+  font-style: italic;
+  font-size: 1.3rem;
+  color: var(--purple);
+}
+
+.about-meet {
+  background: #fffdfd;
+}
+
+.about-story {
+  background: #fcf3fa;
+}
+
+.about-beyond {
+  background: #fffdfd;
+}
+
+.about-favorites {
+  background: #f7f0fd;
+}
+
+/* PHOTO PLACEHOLDERS */
+
+.about-photo-placeholder {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  padding: 20px;
+  text-align: center;
+  overflow: hidden;
+  background: linear-gradient(145deg, #f9e6f2, #e9ddfa);
+  border: 2px dashed #d5b8e6;
+  border-radius: 18px;
+}
+
+.photo-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 20px;
+  text-align: center;
+}
+
+.about-placeholder-icon {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.2;
+}
+
+.about-placeholder-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--purple-dark);
+  line-height: 1.5;
+}
+
+.photo-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.photo-image-loaded {
+  opacity: 1;
+}
+
+/* LARGE PORTRAIT */
+
+.about-portrait-wrap {
+  position: relative;
+  width: min(100%, 370px);
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.about-portrait-backdrop {
+  position: absolute;
+  inset: 20px 2px 2px 35px;
+  border-radius: 28px;
+  background: #efd0e5;
+  transform: rotate(6deg);
+}
+
+.about-portrait {
+  position: relative;
+  z-index: 1;
+  aspect-ratio: 4 / 5;
+  height: auto;
+  border: 9px solid white;
+  border-radius: 28px;
+  box-shadow: 0 18px 45px rgba(118, 82, 143, 0.13);
+}
+
+.about-photo-sparkle {
+  position: absolute;
+  z-index: 2;
+  top: -18px;
+  right: -8px;
+  font-size: 4rem;
+  color: #c6a1df;
+}
+
+/* ========================================
+   POLAROID MEMORIES
+   France in front by default
+   Hovered photo comes to the front
+   ======================================== */
+
+.about-story-layout {
+  grid-template-columns: 0.95fr 1.05fr;
+}
+
+.about-memory-gallery {
+  position: relative;
+  width: 100%;
+  height: 460px;
+  min-height: 0;
+  padding: 0;
+}
+
+.about-polaroid {
+  position: absolute;
+  width: 61%;
+  max-width: 280px;
+  min-width: 0;
+  padding: 10px 10px 18px;
+  background: white;
+  box-shadow: 0 15px 35px rgba(118, 82, 143, 0.13);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.about-polaroid .about-photo-placeholder {
+  aspect-ratio: 4 / 5;
+  height: auto;
+  padding: 0;
+  border-radius: 5px;
+}
+
+.about-polaroid > span {
+  display: block;
+  margin-top: 12px;
+  text-align: center;
+  font-family: var(--font-title);
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--purple-dark);
+  white-space: nowrap;
+}
+
+/* Mauritius — behind by default */
+
+.about-polaroid-left {
+  top: 25px;
+  left: 0;
+  z-index: 1;
+  transform: rotate(-8deg);
+}
+
+/* France — in front by default */
+
+.about-polaroid-right {
+  top: 100px;
+  right: 0;
+  z-index: 2;
+  transform: rotate(8deg);
+}
+
+/* Hover: selected polaroid moves to front */
+
+.about-polaroid-left:hover {
+  z-index: 3;
+  transform: rotate(-4deg) translateY(-8px);
+  box-shadow: 0 22px 45px rgba(118, 82, 143, 0.2);
+}
+
+.about-polaroid-right:hover {
+  z-index: 3;
+  transform: rotate(4deg) translateY(-8px);
+  box-shadow: 0 22px 45px rgba(118, 82, 143, 0.2);
+}
+
+/* INTERESTS */
+
+.about-centered-heading {
+  text-align: center;
+}
+
+.about-section-description {
+  max-width: 670px;
+  margin: 0 auto 42px;
+  line-height: 1.8;
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+.about-interest-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.about-interest-card {
+  padding: 30px 22px;
+  background: #fff8fc;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.about-interest-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 30px rgba(118, 82, 143, 0.1);
+}
+
+.about-interest-icon {
+  font-size: 2rem;
+}
+
+.about-interest-card h3 {
+  margin: 20px 0 12px;
+  font-size: 1.18rem;
+  color: var(--purple-dark);
+}
+
+.about-interest-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+.about-hobby-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 48px;
+}
+
+.about-hobby-gallery .about-photo-placeholder {
+  aspect-ratio: 4 / 3;
+  height: auto;
+  border-radius: 20px;
+}
+
+/* LITTLE JOYS */
+
+.about-favorites-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 35px;
+}
+
+.about-favorites-list span {
+  padding: 13px 21px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: white;
+  color: var(--purple-dark);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.about-closing {
+  margin: 45px 0 0;
+  font-family: var(--font-title);
+  font-size: 1.25rem;
+  font-style: italic;
+  color: var(--purple-dark);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .about-split {
+    gap: 40px;
+  }
+
+  .about-interest-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .about-memory-gallery {
+    height: 390px;
+  }
+
+  .about-polaroid {
+    width: 63%;
+  }
+
+  .about-polaroid-right {
+    top: 90px;
+  }
+}
+
+@media (max-width: 700px) {
+  .about-intro {
+    padding: 70px 20px 55px;
+  }
+
+  .about-subnav {
+    justify-content: flex-start;
+    overflow-x: auto;
+    gap: 22px;
+    padding: 15px 20px;
+  }
+
+  .about-section {
+    padding: 75px 7%;
+  }
+
+  .about-split,
+  .about-story-layout {
+    grid-template-columns: 1fr;
+    gap: 45px;
+  }
+
+  .about-portrait-wrap {
+    width: min(100%, 330px);
+  }
+
+  .about-story-layout .about-memory-gallery {
+    order: 2;
+  }
+
+  .about-story-layout .about-copy {
+    order: 1;
+  }
+
+  .about-memory-gallery {
+    width: min(100%, 430px);
+    height: 440px;
+    margin: 0 auto;
+  }
+
+  .about-polaroid {
+    width: 61%;
+  }
+
+  .about-polaroid-right {
+    top: 105px;
+  }
+
+  .about-hobby-gallery {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-interest-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-hobby-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .about-hobby-gallery .about-photo-placeholder {
+    aspect-ratio: 5 / 3;
+  }
+
+  .about-memory-gallery {
+    height: 340px;
+  }
+
+  .about-polaroid {
+    width: 60%;
+    padding: 7px 7px 13px;
+  }
+
+  .about-polaroid-right {
+    top: 75px;
+  }
+
+  .about-polaroid > span {
+    font-size: 0.8rem;
+  }
+
+  .about-placeholder-label {
+    font-size: 0.7rem;
+  }
+}
+
+/* ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+  .about-interest-card,
+  .about-polaroid,
+  .about-subnav a,
+  .photo-image {
+    transition: none;
+  }
+}

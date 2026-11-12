@@ -1,0 +1,267 @@
+
+/* ========================================
+   CONTACT — EDITORIAL DESIGN
+   ======================================== */
+
+.contact-page {
+  width: 100%;
+  overflow: hidden;
+}
+
+.contact-page,
+.contact-page * {
+  box-sizing: border-box;
+}
+
+.contact-editorial {
+  position: relative;
+  min-height: 680px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 90px 24px 85px;
+  background:
+    radial-gradient(
+      ellipse at 12% 25%,
+      rgba(245, 202, 225, 0.38),
+      transparent 40%
+    ),
+    radial-gradient(
+      ellipse at 85% 75%,
+      rgba(216, 199, 247, 0.45),
+      transparent 45%
+    ),
+    #fffafd;
+}
+
+.contact-editorial-inner {
+  position: relative;
+  width: 100%;
+  max-width: 820px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact-eyebrow {
+  margin: 0 0 25px;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--purple);
+}
+
+/* SMALLER, MORE ELEGANT TITLE */
+
+.contact-editorial h1 {
+  margin: 0 0 26px;
+  font-family: var(--font-title);
+  font-size: clamp(2.5rem, 4.5vw, 4rem);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -1px;
+  color: var(--purple-dark);
+}
+
+.contact-editorial h1 em {
+  font-family: var(--font-decorative, Georgia, serif);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--purple);
+}
+
+.contact-editorial-description {
+  max-width: 570px;
+  margin: 0 auto;
+  font-size: 1.04rem;
+  line-height: 1.9;
+  color: var(--text);
+}
+
+/* DECORATIVE DIVIDER */
+
+.contact-editorial-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  max-width: 340px;
+  margin: 45px auto 30px;
+  color: #c8a5df;
+}
+
+.contact-editorial-divider::before,
+.contact-editorial-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #e7d3ee;
+}
+
+.contact-editorial-divider span {
+  font-size: 1.2rem;
+}
+
+.contact-find-me {
+  margin: 0 0 25px;
+  font-family: var(--font-body);
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  color: var(--purple);
+}
+
+/* SOCIAL LINKS */
+
+.contact-social-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.contact-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-width: 175px;
+  padding: 16px 24px;
+  border: 1px solid #e6d1ed;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--purple-dark);
+  font-family: var(--font-body);
+  font-size: 0.92rem;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(118, 82, 143, 0.05);
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.contact-social-link:hover {
+  transform: translateY(-5px);
+  background: #f6e8fa;
+  border-color: #cdaee1;
+  box-shadow: 0 12px 28px rgba(118, 82, 143, 0.13);
+  color: var(--purple-dark);
+}
+
+.contact-social-link svg {
+  width: 21px;
+  height: 21px;
+  flex-shrink: 0;
+}
+
+.contact-social-arrow {
+  font-size: 1rem;
+  color: var(--purple);
+  transition: transform 0.3s ease;
+}
+
+.contact-social-link:hover .contact-social-arrow {
+  transform: translate(3px, -3px);
+}
+
+/* EMAIL */
+
+.contact-email-note {
+  margin: 28px auto 0;
+  color: #9d88a8;
+  font-size: 0.82rem;
+  line-height: 1.7;
+}
+
+/* SIGNATURE */
+
+.contact-editorial-signature {
+  margin: 55px 0 0;
+  font-family: var(--font-decorative, Georgia, serif);
+  font-size: 1.7rem;
+  font-style: italic;
+  color: var(--purple-dark);
+}
+
+/* DECORATIONS */
+
+.contact-decor {
+  position: absolute;
+  pointer-events: none;
+  color: #d9b9e9;
+  font-weight: 400;
+}
+
+.contact-decor-left {
+  top: 30px;
+  left: -95px;
+  font-size: 5rem;
+  transform: rotate(-15deg);
+}
+
+.contact-decor-right {
+  right: -75px;
+  bottom: 90px;
+  font-size: 3.2rem;
+  color: #ecc4db;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .contact-decor-left {
+    left: 0;
+    top: -60px;
+    font-size: 3.5rem;
+  }
+
+  .contact-decor-right {
+    right: 0;
+    bottom: 45px;
+  }
+}
+
+@media (max-width: 600px) {
+  .contact-editorial {
+    min-height: 600px;
+    padding: 75px 22px 65px;
+  }
+
+  .contact-editorial h1 {
+    font-size: clamp(2.2rem, 8vw, 3rem);
+    letter-spacing: -0.5px;
+  }
+
+  .contact-editorial-description {
+    font-size: 0.97rem;
+    line-height: 1.85;
+  }
+
+  .contact-social-links {
+    gap: 12px;
+  }
+
+  .contact-social-link {
+    min-width: 150px;
+    padding: 14px 18px;
+    font-size: 0.85rem;
+  }
+
+  .contact-editorial-signature {
+    margin-top: 45px;
+  }
+
+  .contact-decor-right {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-social-link,
+  .contact-social-arrow {
+    transition: none;
+  }
+}
