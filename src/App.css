@@ -1,0 +1,356 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+/* =====================================
+   SANIA — PERSONAL WEBSITE
+   Design System — Version 1.0
+===================================== *
+
+/* 1. VARIABLES */
+
+:root {
+  --pink: #f4c9de;
+  --lavender: #dcd0f5;
+  --cream: #fff8fc;
+  --purple: #a77acb;
+  --purple-dark: #76528f;
+  --text: #65566e;
+  --border: #ead8f1;
+  --white: #ffffff;
+
+  --font-title: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', Arial, sans-serif;
+}
+
+/* 2. GLOBAL */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  color: var(--text);
+  background: linear-gradient(
+    135deg,
+    #fff8fc 0%,
+    #f8edff 50%,
+    #fceaf4 100%
+  );
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  width: 100%;
+  flex: 1;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-title);
+  color: var(--purple-dark);
+  line-height: 1.25;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin: 20px 0;
+}
+
+h2 {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  margin-bottom: 24px;
+}
+
+p {
+  line-height: 1.8;
+  margin: 12px 0;
+}
+
+a {
+  color: var(--purple-dark);
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--purple);
+}
+
+/* 3. NAVIGATION */
+
+header {
+  width: 100%;
+  padding: 24px 6%;
+  background: rgba(255, 248, 252, 0.9);
+  border-bottom: 1px solid var(--border);
+}
+
+nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+
+nav a {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--purple-dark);
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: var(--purple);
+}
+
+/* 4. SECTIONS */
+
+main section {
+  width: 100%;
+  padding: 90px 8%;
+  text-align: center;
+}
+
+main section > p {
+  max-width: 800px;
+  margin: 16px auto;
+}
+
+/* 5. ACCUEIL */
+
+#accueil {
+  min-height: 75vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 8%;
+}
+
+#accueil > p:first-child {
+  color: var(--purple);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+#accueil h1 {
+  color: var(--purple-dark);
+  max-width: 1000px;
+  overflow-wrap: break-word;
+}
+
+#accueil > p {
+  font-size: 1.05rem;
+}
+
+#accueil > a {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 14px 32px;
+  background: var(--lavender);
+  border-radius: 30px;
+  color: var(--purple-dark);
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.2s ease,
+              background 0.2s ease;
+}
+
+#accueil > a:hover {
+  background: var(--pink);
+  transform: translateY(-3px);
+}
+
+/* 6. À PROPOS */
+
+#apropos {
+  background: rgba(255, 255, 255, 0.55);
+}
+
+#apropos h2 {
+  color: var(--purple-dark);
+}
+
+/* 7. PROJETS */
+
+#projets {
+  background: rgba(244, 201, 222, 0.15);
+}
+
+#projets h2 {
+  color: var(--purple-dark);
+}
+
+/* 8. CONTACT */
+
+#contact {
+  background: rgba(255, 255, 255, 0.45);
+}
+
+#contact h2 {
+  color: var(--purple-dark);
+}
+
+/* 9. FOOTER */
+
+.site-footer {
+  width: 100%;
+  padding: 35px 6%;
+  background: #fff7fc;
+  border-top: 1px solid var(--border);
+}
+
+.footer-content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+}
+
+.footer-identity {
+  text-align: left;
+}
+
+.footer-name {
+  font-family: var(--font-title);
+  font-size: 1.2rem;
+  color: var(--purple-dark);
+  margin: 0 0 5px;
+}
+
+.footer-copyright {
+  font-size: 0.8rem;
+  color: #967b9f;
+  margin: 0;
+}
+
+.footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+
+.footer-socials a {
+  width: 46px;
+  height: 46px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  border-radius: 50%;
+  background: #f5e8fa;
+  color: #9568b5;
+  text-decoration: none;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.footer-socials a:hover {
+  background: #e9d5f3;
+  color: #76528f;
+  transform: translateY(-3px);
+}
+
+.footer-socials a svg {
+  width: 22px;
+  height: 22px;
+}
+
+
+.footer-socials a:hover {
+  background: #e9d5f3;
+  color: var(--purple-dark);
+  transform: translateY(-3px);
+}
+
+/* 10. RESPONSIVE */
+
+@media (max-width: 768px) {
+  header {
+    padding: 20px 5%;
+  }
+
+  nav {
+    justify-content: center;
+    gap: 16px;
+  }
+
+  nav a {
+    font-size: 0.85rem;
+  }
+
+  main section {
+    padding: 65px 6%;
+  }
+
+  #accueil {
+    min-height: 65vh;
+    padding: 80px 6%;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 8vw, 3rem);
+  }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .footer-identity {
+    text-align: center;
+  }
+
+  .footer-socials {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+
+/* 11. ACCESSIBILITÉ */
+
+a:focus-visible {
+  outline: 2px solid var(--purple-dark);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
