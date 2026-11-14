@@ -8,6 +8,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Journey from './pages/Journey'
 import Projects from './pages/Projects'
+import CV from './pages/CV'
 import Contact from './pages/Contact'
 
 import './App.css'
@@ -22,6 +23,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/journey" element={<Journey />} />
         <Route path="/projects" element={<Projects />} />
+        <Route path="/cv" element={<CV />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
 

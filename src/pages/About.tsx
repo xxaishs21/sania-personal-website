@@ -17,12 +17,49 @@ export default function About() {
       label: fr ? 'Mon histoire' : 'My story',
     },
     {
+      id: 'languages',
+      label: fr ? 'Mes langues' : 'Languages',
+    },
+    {
       id: 'beyond',
-      label: fr ? "Au-delà de l'ingénierie" : 'Beyond Engineering',
+      label: fr ? "Plus que l'ingénierie" : 'Beyond Engineering',
     },
     {
       id: 'favorites',
-      label: fr ? 'Mes petits bonheurs' : 'Little joys',
+      label: fr ? 'Mes chouchous' : 'Little joys',
+    },
+  ]
+
+  const languages = [
+    {
+      flag: '🇫🇷',
+      name: fr ? 'Français' : 'French',
+      level: fr ? 'Natale' : 'Native',
+      bars: 5,
+    },
+    {
+      flag: '🇬🇧',
+      name: fr ? 'Anglais' : 'English',
+      level: fr ? 'Bilingue' : 'Bilingual',
+      bars: 5,
+    },
+    {
+      flag: '🇲🇺',
+      name: fr ? 'Créole mauricien' : 'Mauritian Creole',
+      level: fr ? 'Natale' : 'Native',
+      bars: 5,
+    },
+    {
+      flag: '🇪🇸',
+      name: fr ? 'Espagnol' : 'Spanish',
+      level: fr ? 'B2 — Avancé' : 'B2 — Upper-intermediate',
+      bars: 4,
+    },
+    {
+      flag: '🇩🇪',
+      name: fr ? 'Allemand' : 'German',
+      level: fr ? 'A1 — Débutant' : 'A1 — Beginner',
+      bars: 1,
     },
   ]
 
@@ -31,7 +68,7 @@ export default function About() {
       icon: '📖',
       title: fr ? 'Lecture' : 'Reading',
       description: fr
-        ? "Découvrir de nouveaux univers et me laisser emporter par les histoires."
+        ? 'Découvrir de nouveaux univers et me laisser emporter par les histoires.'
         : 'Exploring new worlds and getting lost in stories.',
     },
     {
@@ -95,14 +132,14 @@ export default function About() {
             </p>
 
             <h2>
-              {fr ? "Hello, moi c'est Sania !" : "Hello, I'm Sania!"}
+              {fr ? "Moi c'est Sania !" : "I'm Sania!"}
             </h2>
 
             <div className="about-text">
               <p>
                 {fr
-                  ? "Je suis une étudiante ingénieure originaire de l'île Maurice, actuellement à Centrale Nantes et en alternance chez Covéa / MMA."
-                  : "I'm an engineering student from Mauritius, currently studying at Centrale Nantes and completing a work-study program at Covéa / MMA."}
+                  ? "Je suis une étudiante ingénieure originaire de l'île Maurice, actuellement à Centrale Nantes et en alternance chez Covéa à MMA au Mans."
+                  : "I'm an engineering student from Mauritius, currently studying at Centrale Nantes and completing a work-study program at Covéa in MMA group in Le Mans."}
               </p>
 
               <p>
@@ -119,7 +156,7 @@ export default function About() {
             <div className="about-portrait-backdrop" />
 
             <PhotoPlaceholder
-              src="/images/about/portrait.jpg"
+              src="/images/portrait.jpg"
               alt={fr ? 'Portrait de Sania' : 'Portrait of Sania'}
               icon="🌷"
               label={fr ? 'Une photo de moi ♡' : 'A photo of me ♡'}
@@ -139,7 +176,7 @@ export default function About() {
           <div className="about-memory-gallery">
             <div className="about-polaroid about-polaroid-left">
               <PhotoPlaceholder
-                src="/images/about/mauritius.jpg"
+                src="/images/mauritius.jpeg"
                 alt={
                   fr
                     ? "Souvenir de l'île Maurice"
@@ -153,7 +190,7 @@ export default function About() {
 
             <div className="about-polaroid about-polaroid-right">
               <PhotoPlaceholder
-                src="/images/about/france.jpg"
+                src="/images/france4.jpeg"
                 alt={fr ? 'Souvenir en France' : 'A memory from France'}
                 icon="🏛️"
                 label={fr ? 'Photo en France' : 'France photo'}
@@ -184,6 +221,71 @@ export default function About() {
                   : "In 2024, I started a new chapter in France to pursue my studies. Since then, every experience has helped me grow and shape my own path."}
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* MES LANGUES */}
+      <section
+        id="languages"
+        className="about-section about-languages"
+      >
+        <div className="about-section-inner">
+          <div className="about-centered-heading">
+            <p className="about-eyebrow">
+              BETWEEN CULTURES ✧
+            </p>
+
+            <h2>
+              {fr
+                ? 'Les langues que je parle'
+                : 'The languages I speak'}
+            </h2>
+
+            <p className="about-section-description">
+              {fr
+                ? 'Cinq langues, plusieurs cultures, une seule histoire.'
+                : 'Five languages, many cultures, one story.'}
+            </p>
+          </div>
+
+          <div className="about-language-grid">
+            {languages.map((item) => (
+              <article
+                className="about-language-card"
+                key={item.name}
+              >
+                <span
+                  className="about-language-flag"
+                  aria-hidden="true"
+                >
+                  {item.flag}
+                </span>
+
+                <h3>{item.name}</h3>
+
+                <p className="about-language-level">
+                  {item.level}
+                </p>
+
+                <div
+                  className="about-language-bars"
+                  role="img"
+                  aria-label={`${item.name} : ${item.level}`}
+                >
+                  {Array.from({ length: 5 }, (_, index) => (
+                    <span
+                      key={index}
+                      className={
+                        index < item.bars
+                          ? 'about-language-bar about-language-bar-filled'
+                          : 'about-language-bar'
+                      }
+                    />
+                  ))}
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>

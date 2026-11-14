@@ -1,0 +1,327 @@
+
+/* ========================================
+   CV PAGE — EDITORIAL DESIGN
+   ======================================== */
+
+.cv-page {
+  width: 100%;
+  overflow: hidden;
+}
+
+.cv-page,
+.cv-page * {
+  box-sizing: border-box;
+}
+
+.cv-section {
+  position: relative;
+  min-height: 100vh;
+  padding: 95px 24px 85px;
+  background:
+    radial-gradient(
+      ellipse at 12% 20%,
+      rgba(245, 202, 225, 0.35),
+      transparent 40%
+    ),
+    radial-gradient(
+      ellipse at 88% 75%,
+      rgba(216, 199, 247, 0.4),
+      transparent 45%
+    ),
+    #fffafd;
+}
+
+.cv-container {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.cv-eyebrow {
+  margin: 0 0 20px;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: var(--purple);
+}
+
+.cv-title {
+  margin: 0 0 22px;
+  font-family: var(--font-title);
+  font-size: clamp(2.5rem, 4.5vw, 4rem);
+  font-weight: 500;
+  line-height: 1.25;
+  letter-spacing: -1px;
+  color: var(--purple-dark);
+}
+
+.cv-title em {
+  font-family: Georgia, serif;
+  font-weight: 400;
+  color: var(--purple);
+}
+
+.cv-description {
+  max-width: 590px;
+  margin: 0 auto 48px;
+  color: var(--text);
+  font-size: 1.04rem;
+  line-height: 1.9;
+}
+
+/* ========================================
+   CV PREVIEW
+   ======================================== */
+
+.cv-preview {
+  position: relative;
+  width: min(100%, 430px);
+  margin: 0 auto;
+  padding: 16px;
+  border: 1px solid #ead8f0;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.55);
+  box-shadow: 0 20px 60px rgba(118, 82, 143, 0.1);
+}
+
+.cv-preview-paper {
+  width: 100%;
+  aspect-ratio: 1 / 1.414;
+  padding: 35px 30px;
+  background: white;
+  border: 1px solid #f0e7f3;
+  border-radius: 4px;
+  text-align: left;
+  overflow: hidden;
+}
+
+.cv-paper-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cv-paper-name {
+  font-family: var(--font-title);
+  font-size: clamp(1.1rem, 3vw, 1.6rem);
+  font-weight: 600;
+  color: #76528f;
+}
+
+.cv-paper-role {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: #a28aaa;
+}
+
+.cv-paper-line {
+  width: 100%;
+  height: 1px;
+  margin: 22px 0;
+  background: #e7d3ee;
+}
+
+.cv-paper-section {
+  margin-bottom: 24px;
+}
+
+.cv-paper-section > span {
+  display: block;
+  margin-bottom: 12px;
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  color: #9870b2;
+}
+
+.cv-placeholder-line {
+  height: 7px;
+  margin-bottom: 8px;
+  border-radius: 5px;
+  background: #f0eaf3;
+}
+
+.cv-placeholder-line.long {
+  width: 95%;
+}
+
+.cv-placeholder-line.medium {
+  width: 75%;
+}
+
+.cv-placeholder-line.short {
+  width: 50%;
+}
+
+/* COMING SOON LABEL */
+
+.cv-coming-soon {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-7deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: max-content;
+  max-width: 90%;
+  padding: 15px 24px;
+  border: 1px solid #d8b9e9;
+  border-radius: 999px;
+  background: rgba(250, 240, 253, 0.97);
+  box-shadow: 0 8px 25px rgba(118, 82, 143, 0.13);
+  color: #76528f;
+  font-family: var(--font-title);
+  font-size: 1.3rem;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.cv-coming-soon span {
+  color: #b78ccc;
+}
+
+/* ========================================
+   BUTTONS
+   ======================================== */
+
+.cv-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 35px;
+}
+
+.cv-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 205px;
+  padding: 15px 25px;
+  border-radius: 999px;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition:
+    background 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.cv-button svg {
+  width: 19px;
+  height: 19px;
+}
+
+.cv-button-primary {
+  border: 1px solid #76528f;
+  background: #76528f;
+  color: white;
+}
+
+.cv-button-secondary {
+  border: 1px solid #d7bde5;
+  background: white;
+  color: #76528f;
+}
+
+.cv-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+  box-shadow: none;
+  transform: none;
+}
+
+.cv-note {
+  margin: 20px 0 0;
+  color: #9d88a8;
+  font-size: 0.83rem;
+  line-height: 1.7;
+}
+
+.cv-signature {
+  margin: 55px 0 0;
+  font-family: Georgia, serif;
+  font-size: 1.5rem;
+  font-style: italic;
+  color: var(--purple-dark);
+}
+
+/* DECORATIONS */
+
+.cv-decoration {
+  position: absolute;
+  pointer-events: none;
+  color: #d9b9e9;
+}
+
+.cv-decoration-left {
+  top: 80px;
+  left: -35px;
+  font-size: 4.5rem;
+}
+
+.cv-decoration-right {
+  top: 320px;
+  right: -35px;
+  font-size: 3rem;
+  color: #ecc4db;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 600px) {
+  .cv-section {
+    padding: 75px 20px 65px;
+  }
+
+  .cv-title {
+    font-size: clamp(2.2rem, 8vw, 3rem);
+  }
+
+  .cv-description {
+    margin-bottom: 35px;
+    font-size: 0.97rem;
+  }
+
+  .cv-preview {
+    padding: 10px;
+  }
+
+  .cv-preview-paper {
+    padding: 25px 20px;
+  }
+
+  .cv-coming-soon {
+    padding: 12px 18px;
+    font-size: 1rem;
+  }
+
+  .cv-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cv-button {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .cv-decoration-right {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cv-button {
+    transition: none;
+  }
+}

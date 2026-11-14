@@ -10,11 +10,6 @@ export default function Home() {
     <main className="home-page">
       <section className="home-hero">
         <div className="home-hero-content">
-          <p className="home-eyebrow">
-            {isFrench
-              ? "HELLO, MOI C'EST SANIA ✨"
-              : "HELLO, I'M SANIA ✨"}
-          </p>
 
           <h1>
             <span className="home-name-light">Aishwaria</span>
@@ -25,8 +20,8 @@ export default function Home() {
 
           <p className="home-role">
             {isFrench
-              ? 'Étudiante ingénieure à Centrale Nantes · Alternante chez Covéa / MMA'
-              : 'Engineering student at Centrale Nantes · Apprentice at Covéa / MMA'}
+              ? 'Étudiante ingénieure à Centrale Nantes · Alternante chez Covéa à MMA'
+              : 'Engineering student at Centrale Nantes · Apprentice at Covéa in MMA group'}
           </p>
 
           <p className="home-description">
@@ -50,8 +45,8 @@ export default function Home() {
               className="home-button home-button-secondary"
             >
               {isFrench
-                ? 'Mes projets ↗'
-                : 'My projects ↗'}
+                ? 'Mes projets'
+                : 'My projects'}
             </Link>
           </div>
         </div>
@@ -79,8 +74,8 @@ export default function Home() {
 
           <div className="home-photo-label">
             {isFrench
-              ? 'Un peu de moi '
-              : 'A little about me'}
+              ? "La personne de l'autre côté"
+              : 'The person behind the screen'}
           </div>
         </div>
       </section>

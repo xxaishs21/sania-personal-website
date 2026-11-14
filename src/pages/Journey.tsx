@@ -1,272 +1,417 @@
 
-import { Link } from 'react-router-dom'
+import { useState } from 'react'
 import { useLanguage } from '../LanguageContext'
 import './Journey.css'
 
-type TimelineEntry = {
-  date: string
-  icon: string
+type Localized = {
+  fr: string
+  en: string
+}
+
+type Highlight = {
   title: string
-  subtitle: string
-  description: string
-  tags: string[]
+  result: Localized
+  description: Localized
+  image?: string
+  crownX?: string
+  crownY?: string
+}
+
+type TimelineEntry = {
+  id: string
+  date: string
+  title: Localized
+  subtitle: Localized
+  description: Localized
+  learning?: Localized[]
+  highlights?: Highlight[]
+  mentions?: {
+    title: string
+    result: Localized
+  }[]
+}
+
+const entries: TimelineEntry[] = [
+  {
+    id: 'centrale',
+    date: '2026 — 2029',
+    title: { fr: 'Centrale Nantes', en: 'Centrale Nantes' },
+    subtitle: {
+      fr: 'Cycle ingénieur SEC · Alternance chez Covéa / MMA',
+      en: 'SEC engineering program · Covéa / MMA apprenticeship',
+    },
+    description: {
+      fr: `J'ai rejoint Centrale Nantes en septembre 2026 pour poursuivre ma formation d'ingénieure en Systèmes Embarqués Communicants.
+        Mon alternance chez Covéa / MMA me permet de découvrir le développement logiciel dans un environnement professionnel.`,
+
+      en: `I joined Centrale Nantes in September 2026 to study Embedded and Connected Systems engineering.
+        My apprenticeship at Covéa / MMA allows me to develop my software engineering skills.`,
+    },
+    learning: [
+      {
+        fr: 'Systèmes embarqués et microcontrôleurs',
+        en: 'Embedded systems and microcontrollers',
+      },
+      {
+        fr: 'Conception numérique',
+        en: 'Digital design',
+      },
+      {
+        fr: 'Développement logiciel en entreprise',
+        en: 'Software development in industry',
+      },
+    ],
+  },
+  {
+    id: 'prepa',
+    date: '2024 — 2026',
+    title: {
+      fr: 'Classe préparatoire · Lycée Kléber',
+      en: 'Preparatory classes · Lycée Kléber',
+    },
+    subtitle: {
+      fr: 'Strasbourg, France',
+      en: 'Strasbourg, France',
+    },
+    description: {
+      fr: `La prépa m'a appris à aborder des problèmes complexes avec méthode, à approfondir mon raisonnement scientifique et à 
+        travailler avec rigueur. C'était aussi une expérience humaine exigeante, qui m'a poussée à développer mon autonomie, ma 
+        persévérance et ma capacité d'adaptation.`,
+      en: `Preparatory classes taught me to approach complex problems methodically, deepen my scientific reasoning, and work rigorously. 
+        It was also a demanding personal experience that helped me develop independence, perseverance, and adaptability.`,
+    },
+    learning: [
+      {
+        fr: 'Raisonnement mathématique et scientifique',
+        en: 'Mathematical and scientific reasoning',
+      },
+      {
+        fr: 'Résolution de problèmes complexes',
+        en: 'Complex problem-solving',
+      },
+      {
+        fr: 'Rigueur, organisation et gestion du temps',
+        en: 'Rigor, organization, and time management',
+      },
+      {
+        fr: 'Autonomie et persévérance',
+        en: 'Independence and perseverance',
+      },
+    ],
+  },
+  {
+    id: 'france',
+    date: '2024',
+    title: {
+      fr: 'Un nouveau chapitre en France',
+      en: 'A new chapter in France',
+    },
+    subtitle: {
+      fr: 'Septembre 2024 · Départ de Maurice',
+      en: 'September 2024 · Leaving Mauritius',
+    },
+    description: {
+      fr: `Quitter l'île Maurice pour poursuivre mes études en France a marqué un tournant dans ma vie. Une nouvelle culture, 
+        de nouvelles rencontres et beaucoup de découvertes : une étape qui m'a fait grandir autant personnellement qu'académiquement.`,
+      en: `Leaving Mauritius to continue my studies in France marked a turning point in my life. A new culture, new people, and many 
+        discoveries helped me grow both personally and academically.`,
+    },
+    learning: [
+      {
+        fr: 'Adaptation à un nouvel environnement',
+        en: 'Adapting to a new environment',
+      },
+      {
+        fr: 'Autonomie et ouverture culturelle',
+        en: 'Independence and cultural openness',
+      },
+    ],
+  },
+  {
+    id: 'awards-2024',
+    date: '2024',
+    title: {
+      fr: 'Projets, concours et belles victoires',
+      en: 'Projects, competitions, and achievements',
+    },
+    subtitle: {
+      fr: 'Mes années lycée · Île Maurice',
+      en: 'My school years · Mauritius',
+    },
+    description: {
+      fr: `Les concours informatiques m'ont donné l'occasion de transformer des idées en projets, de collaborer en équipe et de me confronter à de nouveaux défis`,
+      en: `Computing competitions gave me opportunities to turn ideas into projects, collaborate with teammates, and take on new challenges.`,
+    },
+    highlights: [
+      {
+        title: 'Cr0ss_iT · Trophées NSI 2024',
+        result: {
+          fr: "Lauréate internationale — Prix du Sport · Lauréate régionale — Prix de l'originalité",
+          en: 'International winner — Sports Prize · Regional winner — Originality Prize',
+        },
+        description: {
+          fr: 'Un même projet collaboratif récompensé à deux niveaux.',
+          en: 'One collaborative project recognized at two levels.',
+        },
+        image: '/images/journey/nsi-2024.jpg',
+        crownX: '50%',
+        crownY: '19%',
+      },
+      {
+        title: 'La Nuit du Code 2024',
+        result: {
+          fr: '1re place scolaire · Meilleur projet Terminale',
+          en: '1st at school · Best final-year project',
+        },
+        description: {
+          fr: 'Un projet de programmation réalisé en équipe.',
+          en: 'A team programming project.',
+        },
+        image: '/images/journey/nuit-code-2024.jpg',
+        crownX: '50%',
+        crownY: '19%',
+      },
+    ],
+    mentions: [
+      {
+        title: 'Concours Algoréa',
+        result: {
+          fr: 'Demi-finaliste nationale',
+          en: 'National semifinalist',
+        },
+      },
+      {
+        title: 'Concours Castor Informatique',
+        result: {
+          fr: '2e place scolaire en binôme · 103e place mondiale',
+          en: '2nd at school in a team of two · 103rd worldwide',
+        },
+      },
+    ],
+  },
+  {
+    id: 'awards-2023',
+    date: '2023',
+    title: {
+      fr: 'Mes premières distinctions',
+      en: 'My first awards',
+    },
+    subtitle: {
+      fr: 'Les débuts de mon aventure informatique',
+      en: 'The beginning of my computing journey',
+    },
+    description: {
+      fr: "C'est pendant ces années que j'ai commencé à participer à des concours et à découvrir le plaisir de construire des projets informatiques avec d'autres.",
+      en: "During these years, I began entering competitions and discovered how rewarding it could be to build computing projects with others.",
+    },
+    highlights: [
+      {
+        title: 'Trophées NSI 2023',
+        result: {
+          fr: 'Lauréate régionale · Meilleur projet Première',
+          en: 'Regional winner · Best Première-year project',
+        },
+        description: {
+          fr: 'Un projet informatique original développé en équipe.',
+          en: 'An original computing project developed as a team.',
+        },
+        image: '/images/journey/nsi-2023.jpg',
+        crownX: '50%',
+        crownY: '19%',
+      },
+      {
+        title: 'La Nuit du Code 2023',
+        result: {
+          fr: '1re place scolaire · Meilleur projet Première',
+          en: '1st at school · Best Première-year project',
+        },
+        description: {
+          fr: 'Une nouvelle expérience de création en équipe.',
+          en: 'Another team-based creative coding experience.',
+        },
+        image: '/images/journey/nuit-code-2023.jpg',
+        crownX: '50%',
+        crownY: '19%',
+      },
+    ],
+    mentions: [
+      {
+        title: 'Olympiades nationales de mathématiques',
+        result: {
+          fr: 'Copie sélectionnée pour le concours régional et distinguée',
+          en: 'Selected for the regional competition and recognized',
+        },
+      },
+    ],
+  },
+]
+
+function AwardHighlight({
+  award,
+  fr,
+}: {
+  award: Highlight
+  fr: boolean
+}) {
+  const [loaded, setLoaded] = useState(false)
+
+  return (
+    <article className="journey-highlight">
+      {award.image && (
+        <div
+          className="journey-highlight-photo"
+          style={
+            {
+              '--crown-x': award.crownX || '50%',
+              '--crown-y': award.crownY || '19%',
+            } as React.CSSProperties
+          }
+        >
+          <div className="journey-photo-fallback">
+            <span aria-hidden="true">♡</span>
+            <small>{fr ? 'Photo à ajouter' : 'Photo coming soon'}</small>
+          </div>
+
+          <img
+            src={award.image}
+            alt={award.title}
+            className={loaded ? 'journey-image-visible' : ''}
+            onLoad={() => setLoaded(true)}
+            onError={() => setLoaded(false)}
+          />
+
+          {loaded && (
+            <span className="journey-crown" aria-hidden="true">
+              <svg viewBox="0 0 130 80" fill="none">
+                <path
+                  d="M12 56 L7 17 L38 36 L65 7 L91 36 L123 17 L117 56 Q65 65 12 56Z"
+                  stroke="currentColor"
+                  strokeWidth="4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+                <path
+                  d="M14 66 Q65 73 116 66"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                />
+              </svg>
+            </span>
+          )}
+        </div>
+      )}
+
+      <div className="journey-highlight-text">
+        <span className="journey-highlight-label">
+          ✧ {fr ? 'DISTINCTION' : 'AWARD'}
+        </span>
+        <h4>{award.title}</h4>
+        <p className="journey-highlight-result">
+          {fr ? award.result.fr : award.result.en}
+        </p>
+        <p>{fr ? award.description.fr : award.description.en}</p>
+      </div>
+    </article>
+  )
 }
 
 export default function Journey() {
   const { language } = useLanguage()
   const fr = language === 'fr'
 
-  const timeline: TimelineEntry[] = [
-    {
-      date: fr ? 'Avant 2024' : 'Before 2024',
-      icon: '🌴',
-      title: fr
-        ? "Mes débuts à l'île Maurice"
-        : 'My beginnings in Mauritius',
-      subtitle: fr
-        ? 'Là où tout a commencé'
-        : 'Where it all began',
-      description: fr
-        ? "C'est à l'île Maurice que j'ai développé mon intérêt pour l'informatique et la programmation. Entre découvertes, projets et concours, j'ai commencé à explorer les possibilités offertes par la technologie."
-        : "Mauritius is where my interest in computer science and programming began. Through discoveries, projects, and competitions, I started exploring what technology could make possible.",
-      tags: fr
-        ? ['Informatique', 'Programmation', 'Curiosité']
-        : ['Computer science', 'Programming', 'Curiosity'],
-    },
-    {
-      date: '2024',
-      icon: '✈️',
-      title: fr
-        ? 'Une nouvelle aventure en France'
-        : 'A new adventure in France',
-      subtitle: fr
-        ? 'Un nouveau chapitre'
-        : 'A new chapter',
-      description: fr
-        ? "En septembre 2024, j'ai quitté l'île Maurice pour poursuivre mes études en France. Une expérience qui m'a permis de découvrir un nouvel environnement, de gagner en autonomie et de m'ouvrir à de nouvelles opportunités."
-        : "In September 2024, I left Mauritius to continue my studies in France. This experience helped me discover a new environment, become more independent, and embrace new opportunities.",
-      tags: fr
-        ? ['France', 'Adaptation', 'Autonomie']
-        : ['France', 'Adaptability', 'Independence'],
-    },
-    {
-      date: '2025 — 2026',
-      icon: '📚',
-      title: fr
-        ? 'Classe préparatoire'
-        : 'Preparatory classes',
-      subtitle: fr
-        ? 'Lycée Kléber · Strasbourg'
-        : 'Lycée Kléber · Strasbourg',
-      description: fr
-        ? "Une étape exigeante qui m'a appris à approfondir mes connaissances scientifiques, à développer ma rigueur et à persévérer face à des problèmes complexes."
-        : "A demanding experience that strengthened my scientific knowledge, analytical thinking, and perseverance when facing complex problems.",
-      tags: fr
-        ? ['Mathématiques', 'Sciences', 'Rigueur']
-        : ['Mathematics', 'Science', 'Analytical thinking'],
-    },
-    {
-      date: '2026 — 2029',
-      icon: '🎓',
-      title: 'Centrale Nantes',
-      subtitle: fr
-        ? 'Cycle ingénieur · Systèmes Embarqués Communicants'
-        : 'Engineering degree · Embedded and Communication Systems',
-      description: fr
-        ? "J'ai intégré Centrale Nantes pour poursuivre ma formation d'ingénieure dans le domaine des systèmes embarqués communicants. J'y développe mes compétences techniques à travers les cours, les travaux pratiques et les projets."
-        : "I joined Centrale Nantes to pursue an engineering degree focused on embedded and communication systems, developing technical skills through coursework, practical labs, and projects.",
-      tags: fr
-        ? ['Ingénierie', 'Systèmes embarqués', 'Électronique']
-        : ['Engineering', 'Embedded systems', 'Electronics'],
-    },
-    {
-      date: '2026 — 2029',
-      icon: '💼',
-      title: 'Covéa / MMA',
-      subtitle: fr
-        ? 'Alternance · Systèmes d’information'
-        : 'Work-study · Information systems',
-      description: fr
-        ? "En parallèle de mes études, j'ai rejoint Covéa / MMA en alternance. J'y découvre le développement d'applications dans un environnement professionnel, les outils collaboratifs et le travail en équipe sur des projets concrets."
-        : "Alongside my studies, I joined Covéa / MMA as a work-study engineering student. I'm discovering application development in a professional environment, collaborative tools, and teamwork on real projects.",
-      tags: fr
-        ? ['Développement logiciel', 'Git', 'Travail en équipe']
-        : ['Software development', 'Git', 'Teamwork'],
-    },
-  ]
-
-  const achievements = [
-    {
-      icon: '🏆',
-      title: 'Trophées NSI',
-      detail: fr
-        ? 'Lauréate régionale puis nationale'
-        : 'Regional and national award winner',
-      description: fr
-        ? "Une expérience marquante qui m'a permis de valoriser un projet informatique et le travail réalisé en équipe."
-        : 'A memorable opportunity to showcase a computer science project and collaborative work.',
-    },
-    {
-      icon: '🧩',
-      title: 'Algoréa',
-      detail: fr ? 'Demi-finaliste' : 'Semi-finalist',
-      description: fr
-        ? "Un concours qui a renforcé mon goût pour l'algorithmique et la résolution de problèmes."
-        : 'A competition that strengthened my interest in algorithms and problem-solving.',
-    },
-    {
-      icon: '💻',
-      title: fr ? 'Concours Castor' : 'Bebras Challenge',
-      detail: fr ? 'Finaliste' : 'Finalist',
-      description: fr
-        ? "Une expérience autour de la logique, de la réflexion et de la pensée informatique."
-        : 'An experience focused on logic, reasoning, and computational thinking.',
-    },
-  ]
-
   return (
     <main className="journey-page">
-      {/* PAGE INTRODUCTION */}
-      <header className="journey-intro">
-        <p className="journey-eyebrow">
-          {fr ? 'MON HISTOIRE EN QUELQUES ÉTAPES ✧' : 'MY STORY SO FAR ✧'}
-        </p>
-
+      <header className="journey-hero">
+        <p className="journey-eyebrow">THE STORY SO FAR ✧</p>
         <h1>{fr ? 'Mon parcours' : 'My Journey'}</h1>
-
-        <p className="journey-intro-description">
+        <p>
           {fr
-            ? "De l'île Maurice à Centrale Nantes, chaque étape m'a permis d'apprendre, de grandir et de me rapprocher de mes ambitions."
-            : "From Mauritius to Centrale Nantes, every step has helped me learn, grow, and move closer to my ambitions."}
+            ? "Des découvertes, des défis, des rencontres et quelques jolies victoires. Voici les étapes qui m'ont construite."
+            : 'Discoveries, challenges, new connections, and a few lovely victories. These are the chapters that shaped me.'}
         </p>
       </header>
 
-      {/* TIMELINE */}
-      <section className="journey-timeline-section">
-        <div className="journey-section-heading">
-          <p className="journey-eyebrow">
-            {fr ? 'LE CHEMIN PARCOURU ✧' : 'THE JOURNEY ✧'}
-          </p>
+      <section className="journey-timeline">
+        {entries.map((entry, index) => (
+          <article
+            className={`journey-entry ${
+              index % 2 === 0 ? 'journey-entry-left' : 'journey-entry-right'
+            }`}
+            key={entry.id}
+          >
+            <span className="journey-node" aria-hidden="true" />
 
-          <h2>
-            {fr
-              ? 'Chaque étape raconte une histoire'
-              : 'Every step tells a story'}
-          </h2>
+            <div className="journey-card">
+              <span className="journey-date">{entry.date}</span>
+              <h2>{fr ? entry.title.fr : entry.title.en}</h2>
+              <p className="journey-subtitle">
+                {fr ? entry.subtitle.fr : entry.subtitle.en}
+              </p>
+              <p className="journey-description">
+                {fr ? entry.description.fr : entry.description.en}
+              </p>
 
-          <p>
-            {fr
-              ? 'Un parcours fait de découvertes, de défis et de nouvelles opportunités.'
-              : 'A journey shaped by discoveries, challenges, and new opportunities.'}
-          </p>
-        </div>
+              {entry.learning && (
+                <div className="journey-learning">
+                  <h3>
+                    {fr
+                      ? 'Ce que cette étape m’a apporté ✧'
+                      : 'What I gained from this chapter ✧'}
+                  </h3>
+                  <div className="journey-tags">
+                    {entry.learning.map((item) => (
+                      <span key={item.fr}>
+                        {fr ? item.fr : item.en}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
 
-        <div className="journey-timeline">
-          {timeline.map((entry, index) => (
-            <article
-              className={`journey-timeline-item ${
-                index % 2 === 0
-                  ? 'journey-timeline-left'
-                  : 'journey-timeline-right'
-              }`}
-              key={`${entry.date}-${index}`}
-            >
-              <div className="journey-timeline-marker">
-                <span aria-hidden="true">{entry.icon}</span>
-              </div>
-
-              <div className="journey-timeline-card">
-                <span className="journey-date">{entry.date}</span>
-
-                <h3>{entry.title}</h3>
-
-                <p className="journey-card-subtitle">
-                  {entry.subtitle}
-                </p>
-
-                <p className="journey-card-description">
-                  {entry.description}
-                </p>
-
-                <div className="journey-tags">
-                  {entry.tags.map((tag) => (
-                    <span key={tag}>{tag}</span>
+              {entry.highlights && (
+                <div className="journey-highlights">
+                  {entry.highlights.map((award) => (
+                    <AwardHighlight
+                      key={award.title}
+                      award={award}
+                      fr={fr}
+                    />
                   ))}
                 </div>
-              </div>
-            </article>
-          ))}
-        </div>
+              )}
+
+              {entry.mentions && (
+                <div className="journey-mentions">
+                  <h3>
+                    {fr ? 'Également cette année' : 'Also this year'}
+                  </h3>
+                  {entry.mentions.map((mention) => (
+                    <div className="journey-mention" key={mention.title}>
+                      <span aria-hidden="true">✧</span>
+                      <div>
+                        <strong>{mention.title}</strong>
+                        <p>
+                          {fr ? mention.result.fr : mention.result.en}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </article>
+        ))}
       </section>
 
-      {/* ACHIEVEMENTS */}
-      <section className="journey-achievements-section">
-        <div className="journey-section-heading">
-          <p className="journey-eyebrow">
-            {fr ? 'QUELQUES FIERTÉS ✧' : 'MILESTONES ✧'}
-          </p>
-
-          <h2>
-            {fr
-              ? 'Mes réalisations marquantes'
-              : 'Achievements & Highlights'}
-          </h2>
-
-          <p>
-            {fr
-              ? "Des expériences qui ont nourri ma passion pour l'informatique."
-              : 'Experiences that helped shape my passion for computer science.'}
-          </p>
-        </div>
-
-        <div className="journey-achievements-grid">
-          {achievements.map((achievement) => (
-            <article
-              className="journey-achievement-card"
-              key={achievement.title}
-            >
-              <div className="journey-achievement-icon" aria-hidden="true">
-                {achievement.icon}
-              </div>
-
-              <h3>{achievement.title}</h3>
-
-              <p className="journey-achievement-detail">
-                {achievement.detail}
-              </p>
-
-              <p className="journey-achievement-description">
-                {achievement.description}
-              </p>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      {/* NEXT STEP */}
-      <section className="journey-next-section">
-        <div className="journey-next-content">
-          <p className="journey-eyebrow">
-            {fr ? 'ET MAINTENANT ? ✧' : "WHAT'S NEXT? ✧"}
-          </p>
-
-          <h2>
-            {fr
-              ? "L'aventure continue"
-              : 'The journey continues'}
-          </h2>
-
-          <p>
-            {fr
-              ? "Chaque projet est une nouvelle occasion d'apprendre et de créer quelque chose de concret."
-              : "Every project is a new opportunity to learn and build something meaningful."}
-          </p>
-
-          <Link to="/projects" className="journey-projects-button">
-            {fr ? 'Découvrir mes projets ↗' : 'Explore my projects ↗'}
-          </Link>
-        </div>
-      </section>
+      <div className="journey-ending">
+        <span aria-hidden="true">♡</span>
+        <p>
+          {fr
+            ? "Et l'histoire continue..."
+            : 'And the story continues...'}
+        </p>
+      </div>
     </main>
   )
 }
