@@ -40,7 +40,7 @@ export default function About() {
     {
       flag: '🇬🇧',
       name: fr ? 'Anglais' : 'English',
-      level: fr ? 'Bilingue' : 'Bilingual',
+      level: fr ? 'Natale' : 'Native',
       bars: 5,
     },
     {
@@ -52,7 +52,7 @@ export default function About() {
     {
       flag: '🇪🇸',
       name: fr ? 'Espagnol' : 'Spanish',
-      level: fr ? 'B2 — Avancé' : 'B2 — Upper-intermediate',
+      level: fr ? 'B1 — Intermédiaire' : 'B1 — Intermediate',
       bars: 4,
     },
     {
@@ -176,7 +176,7 @@ export default function About() {
           <div className="about-memory-gallery">
             <div className="about-polaroid about-polaroid-left">
               <PhotoPlaceholder
-                src="/images/mauritius.jpeg"
+                src="/images/about/mauritius.jpeg"
                 alt={
                   fr
                     ? "Souvenir de l'île Maurice"
@@ -190,7 +190,7 @@ export default function About() {
 
             <div className="about-polaroid about-polaroid-right">
               <PhotoPlaceholder
-                src="/images/france4.jpeg"
+                src="/images/about/france4.jpeg"
                 alt={fr ? 'Souvenir en France' : 'A memory from France'}
                 icon="🏛️"
                 label={fr ? 'Photo en France' : 'France photo'}

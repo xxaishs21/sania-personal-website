@@ -1,0 +1,89 @@
+
+/* ========================================
+   RODRIGUES — BLUE THEME
+   Navbar et footer uniquement
+   ======================================== */
+
+.theme-rodrigues {
+  background-color: #fafdff;
+  color: #526875;
+}
+
+/* NAVBAR */
+
+.theme-rodrigues .site-header {
+  background: #f2f9fb;
+  border-bottom-color: #d6e7ed;
+}
+
+.theme-rodrigues .site-header .logo {
+  color: #234d65;
+}
+
+.theme-rodrigues .site-header .logo span {
+  color: #477f9d;
+}
+
+.theme-rodrigues .site-header .nav-links a {
+  color: #526875;
+}
+
+.theme-rodrigues .site-header .nav-links a:hover,
+.theme-rodrigues .site-header .nav-links a.active {
+  color: #285c68;
+}
+
+/* LANGUAGE SWITCHER */
+
+.theme-rodrigues .site-header .language-switcher {
+  background: #e8f5f8;
+  border-color: #d6e7ed;
+}
+
+.theme-rodrigues .site-header .language-switcher button {
+  color: #477f9d;
+}
+
+.theme-rodrigues .site-header .language-switcher button.active {
+  background: #ffffff;
+  color: #234d65;
+  box-shadow: 0 2px 8px rgba(35, 77, 101, 0.1);
+}
+
+.theme-rodrigues .site-header .language-switcher button:hover {
+  color: #234d65;
+}
+
+/* FOOTER */
+
+.theme-rodrigues .site-footer {
+  background: #edf7fa;
+  border-top-color: #d6e7ed;
+}
+
+.theme-rodrigues .footer-name {
+  color: #234d65;
+}
+
+.theme-rodrigues .footer-copyright {
+  color: #71818a;
+}
+
+/* SOCIAL ICONS — BLUE CIRCLES */
+
+.theme-rodrigues .footer-socials a {
+  background: #dceef3;
+  color: #234d65;
+}
+
+.theme-rodrigues .footer-socials a:hover {
+  background: #c6e4ec;
+  color: #285c68;
+}
+
+/* ACCESSIBILITY */
+
+.theme-rodrigues a:focus-visible,
+.theme-rodrigues button:focus-visible {
+  outline-color: #477f9d;
+}
