@@ -16,22 +16,24 @@
   color: var(--text);
 }
 
-/* HERO */
+/* ========================================
+   HERO
+   ======================================== */
 
 .journey-hero {
   padding: 95px 24px 76px;
   text-align: center;
   background: linear-gradient(
     145deg,
-    #fff8fc 0%,
-    #f8f0ff 60%,
-    #fff8fc 100%
+    #fff9fb 0%,
+    #fff0f5 60%,
+    #fff8fb 100%
   );
 }
 
 .journey-eyebrow {
   margin: 0 0 18px;
-  color: #9c7fb2;
+  color: #b84c70;
   font-size: 0.72rem;
   font-weight: 600;
   letter-spacing: 2.2px;
@@ -58,10 +60,10 @@
   gap: 12px;
   margin-top: 28px;
   padding: 11px 19px;
-  border: 1px solid #d9c3e4;
+  border: 1px solid #e7c6d2;
   border-radius: 5px;
   background: #fff;
-  color: #76528f;
+  color: #79344f;
   font-size: 0.85rem;
   font-weight: 600;
   text-decoration: none;
@@ -69,10 +71,12 @@
 }
 
 .journey-cv-button:hover {
-  background: #f7edf9;
+  background: #fff0f5;
 }
 
-/* FILTERS */
+/* ========================================
+   FILTERS
+   ======================================== */
 
 .journey-content {
   max-width: 1080px;
@@ -89,10 +93,10 @@
 
 .journey-filter {
   padding: 10px 16px;
-  border: 1px solid #e8e0e9;
+  border: 1px solid #efdce3;
   border-radius: 5px;
   background: white;
-  color: #756b7b;
+  color: #75646d;
   font-family: inherit;
   font-size: 0.8rem;
   font-weight: 500;
@@ -104,14 +108,14 @@
 }
 
 .journey-filter:hover {
-  border-color: #bba1d0;
-  color: #76528f;
+  border-color: #e895aa;
+  color: #79344f;
 }
 
 .journey-filter.is-active {
-  border-color: #a58ac5;
-  background: #eee6f6;
-  color: #76528f;
+  border-color: #d88ba5;
+  background: #f6dce5;
+  color: #79344f;
   font-weight: 700;
 }
 
@@ -119,18 +123,20 @@
 .journey-expand-button:focus-visible,
 .journey-cv-button:focus-visible,
 .journey-project-link:focus-visible {
-  outline: 2px solid #a58ac5;
+  outline: 2px solid #b84c70;
   outline-offset: 3px;
 }
 
 .journey-result-count {
   margin: 22px 0 0;
-  color: #9b929d;
+  color: #988a91;
   font-size: 0.76rem;
   text-align: center;
 }
 
-/* TIMELINE */
+/* ========================================
+   TIMELINE
+   ======================================== */
 
 .journey-timeline {
   position: relative;
@@ -145,13 +151,13 @@
   left: 50%;
   width: 1px;
   transform: translateX(-50%);
-  background: #59515d;
+  background: #65535d;
   opacity: 0.65;
 }
 
 .journey-entry {
-  --entry-color: #a58ac5;
-  --entry-light: #f3eff9;
+  --entry-color: #b84c70;
+  --entry-light: #fff0f5;
 
   position: relative;
   width: 50%;
@@ -168,39 +174,55 @@
   padding-left: 37px;
 }
 
-/* CATEGORY COLORS */
+/* ========================================
+   CATEGORY COLORS
+   ======================================== */
+
+/* Education — pink */
 
 .journey-education {
-  --entry-color: #a58ac5;
-  --entry-light: #f3eff9;
+  --entry-color: #b84c70;
+  --entry-light: #fcecf2;
 }
 
+/* Professional — burgundy */
+
 .journey-professional {
-  --entry-color: #c887a5;
-  --entry-light: #f9edf2;
+  --entry-color: #79344f;
+  --entry-light: #f8e9ef;
 }
+
+/* Victories — gold */
 
 .journey-victory {
   --entry-color: #c5a34d;
   --entry-light: #fff5d6;
 }
 
+/* Distinctions — warm beige */
+
 .journey-distinction {
   --entry-color: #c8a47d;
   --entry-light: #fbf5eb;
 }
+
+/* Travel — blue */
 
 .journey-travel {
   --entry-color: #8298b4;
   --entry-light: #eef2f8;
 }
 
+/* Volunteering — dusty rose */
+
 .journey-volunteering {
-  --entry-color: #9a8ba5;
-  --entry-light: #f3eff5;
+  --entry-color: #c78c9e;
+  --entry-light: #f9edf2;
 }
 
-/* TIMELINE NODES */
+/* ========================================
+   TIMELINE NODES
+   ======================================== */
 
 .journey-node {
   position: absolute;
@@ -222,17 +244,19 @@
   left: -5.5px;
 }
 
-/* CARDS */
+/* ========================================
+   CARDS
+   ======================================== */
 
 .journey-card {
   position: relative;
   width: 100%;
   padding: 22px 24px 18px;
-  border: 1px solid #ece5ed;
+  border: 1px solid #efdce3;
   border-top: 3px solid var(--entry-color);
   border-radius: 10px;
   background: white;
-  box-shadow: 0 5px 20px rgba(69, 53, 75, 0.035);
+  box-shadow: 0 5px 20px rgba(121, 52, 79, 0.035);
   transition:
     box-shadow 0.25s ease,
     transform 0.25s ease;
@@ -240,7 +264,7 @@
 
 .journey-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 9px 25px rgba(69, 53, 75, 0.075);
+  box-shadow: 0 9px 25px rgba(121, 52, 79, 0.075);
 }
 
 .journey-card-meta {
@@ -253,7 +277,7 @@
 }
 
 .journey-date {
-  color: #6d626e;
+  color: #6d5c65;
   font-size: 0.78rem;
   font-weight: 700;
 }
@@ -267,7 +291,7 @@
 
 .journey-card h2 {
   margin: 0 0 9px;
-  color: #4d4054;
+  color: #79344f;
   font-family: var(--font-title);
   font-size: clamp(1.3rem, 1.7vw, 1.6rem);
   font-weight: 600;
@@ -276,12 +300,14 @@
 
 .journey-subtitle {
   margin: 0 0 17px;
-  color: #827687;
+  color: #8b7480;
   font-size: 0.83rem;
   line-height: 1.65;
 }
 
-/* YELLOW CROWNS */
+/* ========================================
+   YELLOW CROWNS
+   ======================================== */
 
 .journey-crown-sticker {
   position: absolute;
@@ -303,7 +329,9 @@
   height: auto;
 }
 
-/* COMPACT CARDS */
+/* ========================================
+   COMPACT CARDS
+   ======================================== */
 
 .journey-entry-compact {
   margin-bottom: 22px;
@@ -346,7 +374,9 @@
   font-size: 1rem;
 }
 
-/* EXPAND BUTTON */
+/* ========================================
+   EXPAND BUTTON
+   ======================================== */
 
 .journey-expand-button {
   display: flex;
@@ -356,9 +386,9 @@
   width: 100%;
   padding: 12px 0 0;
   border: 0;
-  border-top: 1px solid #f0ebf0;
+  border-top: 1px solid #f1e3e9;
   background: transparent;
-  color: #6f5b78;
+  color: #874d65;
   font-family: inherit;
   font-size: 0.79rem;
   font-weight: 600;
@@ -377,7 +407,7 @@
   flex-shrink: 0;
   width: 24px;
   height: 24px;
-  border: 1px solid #e9e0e9;
+  border: 1px solid #efdce3;
   border-radius: 50%;
   color: var(--entry-color);
   font-size: 1.1rem;
@@ -385,11 +415,13 @@
   line-height: 1;
 }
 
-/* EXPANDED DETAILS */
+/* ========================================
+   EXPANDED DETAILS
+   ======================================== */
 
 .journey-details {
   margin-top: 16px;
-  border-top: 1px solid #f0ebf0;
+  border-top: 1px solid #f1e3e9;
 }
 
 .journey-details[hidden] {
@@ -430,15 +462,17 @@
 
 .journey-details-list span {
   padding: 6px 10px;
-  border: 1px solid #ece4ee;
+  border: 1px solid #efdce3;
   border-radius: 5px;
-  background: #fbf9fc;
-  color: #796783;
+  background: #fff9fb;
+  color: #874d65;
   font-size: 0.74rem;
   line-height: 1.4;
 }
 
-/* PROJECT IMAGES */
+/* ========================================
+   PROJECT IMAGES
+   ======================================== */
 
 .journey-project-image {
   position: relative;
@@ -446,9 +480,9 @@
   aspect-ratio: 16 / 10;
   margin-bottom: 17px;
   overflow: hidden;
-  border: 1px solid #ece5ed;
+  border: 1px solid #efdce3;
   border-radius: 6px;
-  background: #faf7fb;
+  background: #fff9fb;
 }
 
 .journey-image-placeholder {
@@ -457,7 +491,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #a18ba9;
+  color: #bc91a3;
   font-size: 0.8rem;
 }
 
@@ -475,7 +509,9 @@
   opacity: 1;
 }
 
-/* PROJECT LINK */
+/* ========================================
+   PROJECT LINK
+   ======================================== */
 
 .journey-project-link {
   display: inline-flex;
@@ -483,20 +519,22 @@
   gap: 9px;
   margin-top: 20px;
   padding: 9px 13px;
-  border: 1px solid #e4d8e9;
+  border: 1px solid #e7c6d2;
   border-radius: 5px;
-  background: #f9f5fb;
-  color: #76528f;
+  background: #fff5f8;
+  color: #79344f;
   font-size: 0.8rem;
   font-weight: 600;
   text-decoration: none;
 }
 
 .journey-project-link:hover {
-  background: #f2eaf7;
+  background: #f6dce5;
 }
 
-/* ENDING */
+/* ========================================
+   ENDING
+   ======================================== */
 
 .journey-ending {
   padding: 10px 20px 95px;
@@ -505,7 +543,7 @@
 }
 
 .journey-ending span {
-  color: #bd91d1;
+  color: #e895aa;
   font-size: 2rem;
 }
 
@@ -516,7 +554,9 @@
   font-style: italic;
 }
 
-/* RESPONSIVE */
+/* ========================================
+   RESPONSIVE
+   ======================================== */
 
 @media (max-width: 900px) {
   .journey-timeline {
@@ -623,87 +663,9 @@
   }
 }
 
-
 /* ========================================
-   RODRIGUES — CARTE BLEU OCÉAN
-   ======================================== */
-
-.journey-entry.journey-travel {
-  --entry-color: #477f9d;
-  --entry-light: #e8f5f8;
-}
-
-.journey-travel .journey-card {
-  border-color: #d6e7ed;
-  border-top-color: #477f9d;
-  background: #ffffff;
-}
-
-.journey-travel .journey-card h2 {
-  color: #234d65;
-}
-
-.journey-travel .journey-date {
-  color: #526875;
-}
-
-.journey-travel .journey-category {
-  color: #477f9d;
-}
-
-.journey-travel .journey-subtitle,
-.journey-travel .journey-description {
-  color: #526875;
-}
-
-.journey-travel .journey-expand-button {
-  color: #285c68;
-  border-top-color: #d6e7ed;
-}
-
-.journey-travel .journey-expand-button:hover {
-  color: #477f9d;
-}
-
-.journey-travel .journey-expand-symbol {
-  color: #477f9d;
-  border-color: #d6e7ed;
-}
-
-.journey-travel .journey-details {
-  border-top-color: #d6e7ed;
-}
-
-.journey-travel .journey-details-list span {
-  background: #f2f9fb;
-  border-color: #d6e7ed;
-  color: #477f9d;
-}
-
-.journey-travel .journey-project-image {
-  background: #f2f9fb;
-  border-color: #d6e7ed;
-}
-
-.journey-travel .journey-project-link {
-  background: #e8f5f8;
-  border-color: #c6e2e9;
-  color: #285c68;
-}
-
-.journey-travel .journey-project-link:hover {
-  background: #d5edf2;
-  color: #234d65;
-}
-
-.journey-travel .journey-project-link:focus-visible,
-.journey-travel .journey-expand-button:focus-visible {
-  outline-color: #477f9d;
-}
-
-
-/* ========================================
-   RODRIGUES — CARTE BLEU OCÉAN
+   RODRIGUES — OCEAN BLUE CARD
+   Specific project identity preserved
    ======================================== */
 
 .journey-entry.journey-travel {

@@ -23,15 +23,15 @@
   background:
     radial-gradient(
       ellipse at 12% 25%,
-      rgba(245, 202, 225, 0.38),
+      rgba(244, 197, 214, 0.38),
       transparent 40%
     ),
     radial-gradient(
       ellipse at 85% 75%,
-      rgba(216, 199, 247, 0.45),
+      rgba(246, 220, 229, 0.5),
       transparent 45%
     ),
-    #fffafd;
+    #fff9fb;
 }
 
 .contact-editorial-inner {
@@ -48,10 +48,12 @@
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 3px;
-  color: var(--purple);
+  color: var(--color-accent);
 }
 
-/* SMALLER, MORE ELEGANT TITLE */
+/* ========================================
+   TITLE
+   ======================================== */
 
 .contact-editorial h1 {
   margin: 0 0 26px;
@@ -60,14 +62,14 @@
   font-weight: 500;
   line-height: 1.25;
   letter-spacing: -1px;
-  color: var(--purple-dark);
+  color: var(--color-primary);
 }
 
 .contact-editorial h1 em {
   font-family: var(--font-decorative, Georgia, serif);
   font-weight: 400;
   font-style: italic;
-  color: var(--purple);
+  color: var(--color-accent);
 }
 
 .contact-editorial-description {
@@ -78,7 +80,9 @@
   color: var(--text);
 }
 
-/* DECORATIVE DIVIDER */
+/* ========================================
+   DECORATIVE DIVIDER
+   ======================================== */
 
 .contact-editorial-divider {
   display: flex;
@@ -87,7 +91,7 @@
   gap: 18px;
   max-width: 340px;
   margin: 45px auto 30px;
-  color: #c8a5df;
+  color: #d88ba5;
 }
 
 .contact-editorial-divider::before,
@@ -95,7 +99,7 @@
   content: '';
   flex: 1;
   height: 1px;
-  background: #e7d3ee;
+  background: #efd0dc;
 }
 
 .contact-editorial-divider span {
@@ -108,10 +112,12 @@
   font-size: 0.73rem;
   font-weight: 700;
   letter-spacing: 2.5px;
-  color: var(--purple);
+  color: var(--color-accent);
 }
 
-/* SOCIAL LINKS */
+/* ========================================
+   SOCIAL LINKS
+   ======================================== */
 
 .contact-social-links {
   display: flex;
@@ -127,15 +133,15 @@
   gap: 12px;
   min-width: 175px;
   padding: 16px 24px;
-  border: 1px solid #e6d1ed;
+  border: 1px solid #efd0dc;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.8);
-  color: var(--purple-dark);
+  color: var(--color-primary);
   font-family: var(--font-body);
   font-size: 0.92rem;
   font-weight: 600;
   text-decoration: none;
-  box-shadow: 0 6px 20px rgba(118, 82, 143, 0.05);
+  box-shadow: 0 6px 20px rgba(121, 52, 79, 0.05);
   transition:
     transform 0.3s ease,
     background 0.3s ease,
@@ -145,10 +151,10 @@
 
 .contact-social-link:hover {
   transform: translateY(-5px);
-  background: #f6e8fa;
-  border-color: #cdaee1;
-  box-shadow: 0 12px 28px rgba(118, 82, 143, 0.13);
-  color: var(--purple-dark);
+  background: #f6dce5;
+  border-color: #e895aa;
+  box-shadow: 0 12px 28px rgba(121, 52, 79, 0.13);
+  color: var(--color-primary);
 }
 
 .contact-social-link svg {
@@ -159,7 +165,7 @@
 
 .contact-social-arrow {
   font-size: 1rem;
-  color: var(--purple);
+  color: var(--color-accent);
   transition: transform 0.3s ease;
 }
 
@@ -167,31 +173,37 @@
   transform: translate(3px, -3px);
 }
 
-/* EMAIL */
+/* ========================================
+   EMAIL
+   ======================================== */
 
 .contact-email-note {
   margin: 28px auto 0;
-  color: #9d88a8;
+  color: #a07889;
   font-size: 0.82rem;
   line-height: 1.7;
 }
 
-/* SIGNATURE */
+/* ========================================
+   SIGNATURE
+   ======================================== */
 
 .contact-editorial-signature {
   margin: 55px 0 0;
   font-family: var(--font-decorative, Georgia, serif);
   font-size: 1.7rem;
   font-style: italic;
-  color: var(--purple-dark);
+  color: var(--color-primary);
 }
 
-/* DECORATIONS */
+/* ========================================
+   DECORATIONS
+   ======================================== */
 
 .contact-decor {
   position: absolute;
   pointer-events: none;
-  color: #d9b9e9;
+  color: #e8b9ca;
   font-weight: 400;
 }
 
@@ -206,10 +218,12 @@
   right: -75px;
   bottom: 90px;
   font-size: 3.2rem;
-  color: #ecc4db;
+  color: #e895aa;
 }
 
-/* RESPONSIVE */
+/* ========================================
+   RESPONSIVE
+   ======================================== */
 
 @media (max-width: 900px) {
   .contact-decor-left {
@@ -257,6 +271,15 @@
   .contact-decor-right {
     display: none;
   }
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+
+.contact-social-link:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 4px;
 }
 
 @media (prefers-reduced-motion: reduce) {

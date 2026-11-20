@@ -10,17 +10,21 @@
 
 .cv-page {
   background: #fffdfd;
-  color: var(--text, #65566e);
+  color: var(--color-text, #65535d);
   font-family: 'DM Sans', sans-serif;
 }
+
+/* ========================================
+   HERO
+   ======================================== */
 
 .cv-hero {
   padding: 90px 24px 80px;
   background: linear-gradient(
     135deg,
-    #fff8fc 0%,
-    #f5edfc 70%,
-    #fff8fc 100%
+    #fff9fb 0%,
+    #fff0f5 70%,
+    #fff8fb 100%
   );
   text-align: center;
 }
@@ -32,7 +36,7 @@
 
 .cv-eyebrow {
   margin: 0 0 20px;
-  color: #9b7eb4;
+  color: var(--color-accent);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 2.5px;
@@ -40,7 +44,7 @@
 
 .cv-hero h1 {
   margin: 0 0 15px;
-  color: #76528f;
+  color: var(--color-primary);
   font-family: 'Playfair Display', serif;
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 600;
@@ -49,14 +53,14 @@
 
 .cv-hero-role {
   margin: 0 0 10px;
-  color: #5e4d69;
+  color: #79344f;
   font-size: 1.12rem;
   font-weight: 600;
 }
 
 .cv-hero-description {
   margin: 0;
-  color: #83718d;
+  color: #937783;
   font-size: 0.93rem;
   line-height: 1.8;
 }
@@ -69,13 +73,17 @@
   margin-top: 30px;
 }
 
+/* ========================================
+   BUTTONS
+   ======================================== */
+
 .cv-button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
   padding: 12px 18px;
-  border: 1px solid #c9b0db;
+  border: 1px solid #e0b4c4;
   border-radius: 6px;
   font-size: 0.83rem;
   font-weight: 600;
@@ -90,22 +98,22 @@
 }
 
 .cv-button-primary {
-  background: #76528f;
+  background: var(--color-primary);
   color: white;
 }
 
 .cv-button-primary:hover {
-  background: #65447d;
+  background: var(--color-accent);
   color: white;
 }
 
 .cv-button-secondary {
   background: white;
-  color: #76528f;
+  color: var(--color-primary);
 }
 
 .cv-button-secondary:hover {
-  background: #f9f3fc;
+  background: #fff0f5;
 }
 
 .cv-document-language {
@@ -118,11 +126,13 @@
 
 .cv-pdf-note {
   margin: 14px 0 0;
-  color: #97849f;
+  color: #a38a95;
   font-size: 0.73rem;
 }
 
-/* TWO-COLUMN LAYOUT */
+/* ========================================
+   TWO-COLUMN LAYOUT
+   ======================================== */
 
 .cv-layout {
   display: grid;
@@ -151,11 +161,11 @@
   gap: 15px;
   margin-bottom: 25px;
   padding-bottom: 15px;
-  border-bottom: 1px solid #eadfec;
+  border-bottom: 1px solid #efdce3;
 }
 
 .cv-section-number {
-  color: #bb9acb;
+  color: #d58ca6;
   font-size: 0.75rem;
   font-weight: 700;
 }
@@ -163,7 +173,7 @@
 .cv-section-heading h2,
 .cv-side-panel h2 {
   margin: 0;
-  color: #76528f;
+  color: var(--color-primary);
   font-family: 'Playfair Display', serif;
   font-size: 1.55rem;
   font-weight: 600;
@@ -171,12 +181,14 @@
 
 .cv-profile-text {
   margin: 0;
-  color: #706377;
+  color: var(--color-text);
   font-size: 0.91rem;
   line-height: 1.95;
 }
 
-/* EXPERIENCE */
+/* ========================================
+   EXPERIENCE
+   ======================================== */
 
 .cv-experience-list {
   display: flex;
@@ -186,7 +198,7 @@
 
 .cv-experience-card {
   padding: 20px 22px;
-  border: 1px solid #ece4ee;
+  border: 1px solid #efdce3;
   border-left: 3px solid #c887a5;
   border-radius: 8px;
   background: white;
@@ -202,7 +214,7 @@
 .cv-item-date {
   display: block;
   margin-bottom: 8px;
-  color: #aa83b9;
+  color: #b84c70;
   font-size: 0.75rem;
   font-weight: 700;
 }
@@ -211,21 +223,21 @@
 .cv-education-item h3,
 .cv-simple-item h3 {
   margin: 0 0 6px;
-  color: #4f4057;
+  color: #79344f;
   font-size: 0.98rem;
   font-weight: 700;
 }
 
 .cv-item-role {
   margin: 0 0 5px;
-  color: #75677c;
+  color: #806b76;
   font-size: 0.84rem;
   line-height: 1.65;
 }
 
 .cv-item-location {
   margin: 0;
-  color: #a096a5;
+  color: #a3959c;
   font-size: 0.77rem;
 }
 
@@ -236,35 +248,37 @@
   justify-content: center;
   width: 31px;
   height: 31px;
-  border: 1px solid #eadcea;
+  border: 1px solid #efdce3;
   border-radius: 50%;
-  background: #fff9fd;
-  color: #a477b3;
+  background: #fff9fb;
+  color: #b84c70;
   font-size: 1.2rem;
   cursor: pointer;
 }
 
 .cv-expand:hover {
-  background: #f5eaf8;
+  background: #f6dce5;
 }
 
 .cv-experience-details {
   margin-top: 18px;
   padding-top: 16px;
-  border-top: 1px solid #f0e9f1;
+  border-top: 1px solid #f1e4e9;
 }
 
 .cv-experience-details p {
   margin: 0;
-  color: #736777;
+  color: #806b76;
   font-size: 0.85rem;
   line-height: 1.85;
 }
 
-/* EDUCATION */
+/* ========================================
+   EDUCATION
+   ======================================== */
 
 .cv-education-list {
-  border-left: 1px solid #d9c5e3;
+  border-left: 1px solid #e7c6d2;
   margin-left: 5px;
 }
 
@@ -285,11 +299,13 @@
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  background: #b69bce;
-  box-shadow: 0 0 0 4px #f6effa;
+  background: #d58ca6;
+  box-shadow: 0 0 0 4px #fcecf2;
 }
 
-/* SIMPLE LISTS */
+/* ========================================
+   SIMPLE LISTS
+   ======================================== */
 
 .cv-simple-list {
   display: flex;
@@ -302,7 +318,7 @@
   grid-template-columns: 85px minmax(0, 1fr);
   gap: 16px;
   padding: 17px 0;
-  border-bottom: 1px solid #f0eaf1;
+  border-bottom: 1px solid #f1e4e9;
 }
 
 .cv-simple-item:first-child {
@@ -319,12 +335,14 @@
 
 .cv-simple-item p {
   margin: 0;
-  color: #827588;
+  color: #8b7781;
   font-size: 0.83rem;
   line-height: 1.7;
 }
 
-/* SIDEBAR */
+/* ========================================
+   SIDEBAR
+   ======================================== */
 
 .cv-sidebar {
   display: flex;
@@ -335,9 +353,9 @@
 
 .cv-side-panel {
   padding: 25px 22px;
-  border: 1px solid #eee5ef;
+  border: 1px solid #efdce3;
   border-radius: 9px;
-  background: #fdfafd;
+  background: #fff9fb;
 }
 
 .cv-side-panel h2 {
@@ -355,7 +373,7 @@
 
 .cv-skill-group h3 {
   margin: 0 0 11px;
-  color: #62536b;
+  color: #79344f;
   font-size: 0.82rem;
   font-weight: 700;
 }
@@ -374,10 +392,10 @@
 .cv-tag {
   display: inline-block;
   padding: 6px 9px;
-  border: 1px solid #e8ddec;
+  border: 1px solid #efdce3;
   border-radius: 5px;
   background: white;
-  color: #776680;
+  color: #806b76;
   font-size: 0.72rem;
 }
 
@@ -394,12 +412,12 @@
 }
 
 .cv-language-item strong {
-  color: #65556d;
+  color: #79344f;
   font-size: 0.84rem;
 }
 
 .cv-language-item span {
-  color: #98899e;
+  color: #a38a95;
   font-size: 0.77rem;
 }
 
@@ -414,8 +432,8 @@
   justify-content: space-between;
   gap: 12px;
   padding: 12px 0;
-  border-bottom: 1px solid #eee5ef;
-  color: #76528f;
+  border-bottom: 1px solid #efdce3;
+  color: var(--color-primary);
   font-size: 0.84rem;
   font-weight: 600;
   text-decoration: none;
@@ -431,20 +449,22 @@
 }
 
 .cv-social-links a:hover {
-  color: #a477b3;
+  color: var(--color-accent);
 }
 
-/* BOTTOM DOWNLOAD */
+/* ========================================
+   BOTTOM DOWNLOAD
+   ======================================== */
 
 .cv-bottom {
   padding: 52px 24px 75px;
-  background: #f9f3fc;
+  background: #fff0f5;
   text-align: center;
 }
 
 .cv-bottom p {
   margin: 0 0 16px;
-  color: #75647d;
+  color: #79344f;
   font-family: 'Playfair Display', serif;
   font-size: 1.3rem;
 }
@@ -454,28 +474,32 @@
   align-items: center;
   gap: 10px;
   padding: 11px 18px;
-  border: 1px solid #d9c5e4;
+  border: 1px solid #e7c6d2;
   border-radius: 5px;
   background: white;
-  color: #76528f;
+  color: var(--color-primary);
   font-size: 0.83rem;
   font-weight: 600;
   text-decoration: none;
 }
 
 .cv-bottom a:hover {
-  background: #f1e8f6;
+  background: #f6dce5;
 }
 
-/* ACCESSIBILITY */
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
 
 .cv-page a:focus-visible,
 .cv-page button:focus-visible {
-  outline: 2px solid #a77acb;
+  outline: 2px solid var(--color-accent);
   outline-offset: 3px;
 }
 
-/* RESPONSIVE */
+/* ========================================
+   RESPONSIVE
+   ======================================== */
 
 @media (max-width: 900px) {
   .cv-layout {

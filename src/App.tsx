@@ -1,4 +1,5 @@
 
+import { useLayoutEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 
 import Navbar from './components/Navbar'
@@ -21,13 +22,26 @@ import Ndc from './pages/project-details/Ndc'
 import './App.css'
 import './RodriguesTheme.css'
 
+function ScrollToTop() {
+  const { pathname } = useLocation()
+
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0)
+  }, [pathname])
+
+  return null
+}
+
 function App() {
   const { pathname } = useLocation()
 
-  const isRodriguesPage = pathname === '/projects/rodrigues-water'
+  const isRodriguesPage =
+    pathname === '/projects/rodrigues-water'
 
   return (
     <div className={isRodriguesPage ? 'theme-rodrigues' : ''}>
+      <ScrollToTop />
+
       <Navbar />
 
       <Routes>
@@ -36,12 +50,35 @@ function App() {
         <Route path="/journey" element={<Journey />} />
         <Route path="/projects" element={<Projects />} />
 
-        <Route path="/projects/rodrigues-water" element={<Rodrigues />}/>
-        <Route path="/projects/opti-recom" element={<OptiRecom />}/>
-        <Route path="/projects/Cinapple" element={<Cinapple />}/>
-        <Route path="/projects/queuecup" element={<QueueCup />}/>
-        <Route path="/projects/cross-it" element={<CrossIT />} />
-        <Route path="/projects/ndc" element={<Ndc />} />
+        <Route
+          path="/projects/rodrigues-water"
+          element={<Rodrigues />}
+        />
+
+        <Route
+          path="/projects/opti-recom"
+          element={<OptiRecom />}
+        />
+
+        <Route
+          path="/projects/Cinapple"
+          element={<Cinapple />}
+        />
+
+        <Route
+          path="/projects/queuecup"
+          element={<QueueCup />}
+        />
+
+        <Route
+          path="/projects/cross-it"
+          element={<CrossIT />}
+        />
+
+        <Route
+          path="/projects/ndc"
+          element={<Ndc />}
+        />
 
         <Route path="/cv" element={<CV />} />
         <Route path="/contact" element={<Contact />} />
