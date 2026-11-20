@@ -9,62 +9,6 @@ type Localized = Record<Lang, string>
 const githubUrl = 'https://github.com/xxaishs21/Nuit-du-code-2024'
 const imagePath = '/images/projects/ndc/'
 
-const features: {
-  number: string
-  title: Localized
-  description: Localized
-  image: string
-}[] = [
-  {
-    number: '01',
-    title: {
-      fr: 'Explorer les profondeurs',
-      en: 'Explore the depths',
-    },
-    description: {
-      fr: "Déplacez Thomas avec les flèches directionnelles et creusez progressivement vers le centre de la planète Sylva.",
-      en: 'Move Thomas using the arrow keys and dig progressively toward the center of planet Sylva.',
-    },
-    image: 'gameplay.png',
-  },
-  {
-    number: '02',
-    title: {
-      fr: 'Miner et collecter',
-      en: 'Mine and collect',
-    },
-    description: {
-      fr: "Cliquez sur les blocs accessibles pour les détruire et récupérer de l'or. Les différents minerais nécessitent des outils adaptés.",
-      en: 'Click accessible blocks to break them and collect gold. Different minerals require suitable tools.',
-    },
-    image: 'blocs.png',
-  },
-  {
-    number: '03',
-    title: {
-      fr: 'Améliorer sa pioche',
-      en: 'Upgrade your pickaxe',
-    },
-    description: {
-      fr: "Utilisez l'or collecté pour améliorer votre morpho-pioche et accéder à des matériaux plus résistants.",
-      en: 'Spend collected gold to upgrade your morphing pickaxe and access tougher materials.',
-    },
-    image: 'pioche-fer.png',
-  },
-  {
-    number: '04',
-    title: {
-      fr: 'Trouver le trésor',
-      en: 'Find the treasure',
-    },
-    description: {
-      fr: "Progressez jusqu'au coffre caché dans les profondeurs, en évitant les blocs d'Eternium, qui sont incassables.",
-      en: 'Reach the treasure chest hidden underground while avoiding unbreakable Eternium blocks.',
-    },
-    image: 'eternium.png',
-  },
-]
-
 const challenges: {
   number: string
   title: Localized
@@ -273,136 +217,134 @@ export default function Ndc() {
         </div>
       </section>
 
-      
-{/* GAMEPLAY */}
+      {/* GAMEPLAY */}
 
-<section className="ndc-section ndc-gameplay">
-  <div className="ndc-container">
-    <div className="ndc-centered">
-      <span className="ndc-eyebrow">
-        02 / {fr ? 'LE GAMEPLAY' : 'GAMEPLAY'}
-      </span>
+      <section className="ndc-section ndc-gameplay">
+        <div className="ndc-container">
+          <div className="ndc-centered">
+            <span className="ndc-eyebrow">
+              02 / {fr ? 'LE GAMEPLAY' : 'GAMEPLAY'}
+            </span>
 
-      <h2>
-        {fr
-          ? 'Creuser. Collecter. Améliorer.'
-          : 'Dig. Collect. Upgrade.'}
-      </h2>
+            <h2>
+              {fr
+                ? 'Creuser. Collecter. Améliorer.'
+                : 'Dig. Collect. Upgrade.'}
+            </h2>
 
-      <p>
-        {fr
-          ? "Une aventure où chaque couche de la planète réserve de nouvelles découvertes."
-          : 'An adventure where every layer of the planet brings new discoveries.'}
-      </p>
-    </div>
+            <p>
+              {fr
+                ? "Une aventure où chaque couche de la planète réserve de nouvelles découvertes."
+                : 'An adventure where every layer of the planet brings new discoveries.'}
+            </p>
+          </div>
 
-    {/* MAIN GAMEPLAY SHOWCASE */}
+          {/* MAIN GAMEPLAY SHOWCASE */}
 
-    <div className="ndc-gameplay-showcase">
-      <div className="ndc-showcase-image">
-        <img
-          src={`${imagePath}gameplay.png`}
-          alt={
-            fr
-              ? 'Capture du jeu montrant les différentes couches de la planète Sylva'
-              : 'Screenshot showing the different underground layers of planet Sylva'
-          }
-          loading="lazy"
-        />
-      </div>
+          <div className="ndc-gameplay-showcase">
+            <div className="ndc-showcase-image">
+              <img
+                src={`${imagePath}gameplay.png`}
+                alt={
+                  fr
+                    ? 'Capture du jeu montrant les différentes couches de la planète Sylva'
+                    : 'Screenshot showing the different underground layers of planet Sylva'
+                }
+                loading="lazy"
+              />
+            </div>
 
-      <div className="ndc-showcase-content">
-        <span className="ndc-showcase-label">
-          <span aria-hidden="true">✦</span>
-          01 — GAMEPLAY
-        </span>
+            <div className="ndc-showcase-content">
+              <span className="ndc-showcase-label">
+                <span aria-hidden="true">✦</span>
+                01 — GAMEPLAY
+              </span>
 
-        <h3>
-          {fr
-            ? 'Explorer les profondeurs'
-            : 'Explore the depths'}
-        </h3>
+              <h3>
+                {fr
+                  ? 'Explorer les profondeurs'
+                  : 'Explore the depths'}
+              </h3>
 
-        <p>
-          {fr
-            ? "Accompagnez Thomas dans son exploration de la planète Sylva. Déplacez-vous à travers les galeries, creusez les blocs accessibles et progressez toujours plus profondément à la recherche du trésor."
-            : 'Join Thomas as he explores planet Sylva. Navigate underground passages, mine accessible blocks, and venture deeper in search of the hidden treasure.'}
-        </p>
+              <p>
+                {fr
+                  ? "Accompagnez Thomas dans son exploration de la planète Sylva. Déplacez-vous à travers les galeries, creusez les blocs accessibles et progressez toujours plus profondément à la recherche du trésor."
+                  : 'Join Thomas as he explores planet Sylva. Navigate underground passages, mine accessible blocks, and venture deeper in search of the hidden treasure.'}
+              </p>
 
-        <div className="ndc-showcase-tags">
-          <span>{fr ? 'Exploration' : 'Exploration'}</span>
-          <span>{fr ? 'Plateforme' : 'Platforming'}</span>
-          <span>Pixel Art</span>
+              <div className="ndc-showcase-tags">
+                <span>{fr ? 'Exploration' : 'Exploration'}</span>
+                <span>{fr ? 'Plateforme' : 'Platforming'}</span>
+                <span>Pixel Art</span>
+              </div>
+            </div>
+          </div>
+
+          {/* THREE GAMEPLAY MECHANICS */}
+
+          <div className="ndc-mechanics-grid">
+            <article className="ndc-mechanic-card">
+              <div className="ndc-mechanic-image">
+                <img
+                  src={`${imagePath}blocs.png`}
+                  alt={fr ? 'Différents blocs du jeu' : 'Different game blocks'}
+                  loading="lazy"
+                />
+              </div>
+
+              <div className="ndc-mechanic-content">
+                <span className="ndc-mechanic-number">02</span>
+                <h3>{fr ? 'Miner' : 'Mine'}</h3>
+                <p>
+                  {fr
+                    ? "Détruire les blocs accessibles et collecter de l'or."
+                    : 'Break accessible blocks and collect gold.'}
+                </p>
+              </div>
+            </article>
+
+            <article className="ndc-mechanic-card">
+              <div className="ndc-mechanic-image">
+                <img
+                  src={`${imagePath}pioche-fer.png`}
+                  alt={fr ? 'Pioche du jeu' : 'Game pickaxe'}
+                  loading="lazy"
+                />
+              </div>
+
+              <div className="ndc-mechanic-content">
+                <span className="ndc-mechanic-number">03</span>
+                <h3>{fr ? 'Améliorer' : 'Upgrade'}</h3>
+                <p>
+                  {fr
+                    ? 'Faire évoluer la morpho-pioche pour miner des matériaux plus résistants.'
+                    : 'Upgrade the morphing pickaxe to mine tougher materials.'}
+                </p>
+              </div>
+            </article>
+
+            <article className="ndc-mechanic-card">
+              <div className="ndc-mechanic-image">
+                <img
+                  src={`${imagePath}eternium.png`}
+                  alt={fr ? "Bloc d'Eternium" : 'Eternium block'}
+                  loading="lazy"
+                />
+              </div>
+
+              <div className="ndc-mechanic-content">
+                <span className="ndc-mechanic-number">04</span>
+                <h3>{fr ? 'Découvrir' : 'Discover'}</h3>
+                <p>
+                  {fr
+                    ? "Contourner les blocs d'Eternium incassables pour atteindre le trésor caché."
+                    : 'Navigate around unbreakable Eternium blocks to reach the hidden treasure.'}
+                </p>
+              </div>
+            </article>
+          </div>
         </div>
-      </div>
-    </div>
-
-    {/* THREE GAMEPLAY MECHANICS */}
-
-    <div className="ndc-mechanics-grid">
-      <article className="ndc-mechanic-card">
-        <div className="ndc-mechanic-image">
-          <img
-            src={`${imagePath}blocs.png`}
-            alt={fr ? 'Différents blocs du jeu' : 'Different game blocks'}
-            loading="lazy"
-          />
-        </div>
-
-        <div className="ndc-mechanic-content">
-          <span className="ndc-mechanic-number">02</span>
-          <h3>{fr ? 'Miner' : 'Mine'}</h3>
-          <p>
-            {fr
-              ? "Détruire les blocs accessibles et collecter de l'or."
-              : 'Break accessible blocks and collect gold.'}
-          </p>
-        </div>
-      </article>
-
-      <article className="ndc-mechanic-card">
-        <div className="ndc-mechanic-image">
-          <img
-            src={`${imagePath}pioche-fer.png`}
-            alt={fr ? 'Pioche du jeu' : 'Game pickaxe'}
-            loading="lazy"
-          />
-        </div>
-
-        <div className="ndc-mechanic-content">
-          <span className="ndc-mechanic-number">03</span>
-          <h3>{fr ? 'Améliorer' : 'Upgrade'}</h3>
-          <p>
-            {fr
-              ? 'Faire évoluer la morpho-pioche pour miner des matériaux plus résistants.'
-              : 'Upgrade the morphing pickaxe to mine tougher materials.'}
-          </p>
-        </div>
-      </article>
-
-      <article className="ndc-mechanic-card">
-        <div className="ndc-mechanic-image">
-          <img
-            src={`${imagePath}eternium.png`}
-            alt={fr ? "Bloc d'Eternium" : 'Eternium block'}
-            loading="lazy"
-          />
-        </div>
-
-        <div className="ndc-mechanic-content">
-          <span className="ndc-mechanic-number">04</span>
-          <h3>{fr ? 'Découvrir' : 'Discover'}</h3>
-          <p>
-            {fr
-              ? "Contourner les blocs d'Eternium incassables pour atteindre le trésor caché."
-              : 'Navigate around unbreakable Eternium blocks to reach the hidden treasure.'}
-          </p>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
+      </section>
 
       {/* CONTROLS */}
 
