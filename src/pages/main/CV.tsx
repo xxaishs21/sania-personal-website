@@ -1,6 +1,6 @@
 
 import { useState } from 'react'
-import { useLanguage } from '../LanguageContext'
+import { useLanguage } from '../../LanguageContext'
 import './CV.css'
 
 type Localized = {

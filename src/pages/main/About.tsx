@@ -1,6 +1,6 @@
 
-import { useLanguage } from '../LanguageContext'
-import PhotoPlaceholder from '../components/PhotoPlaceholder'
+import { useLanguage } from '../../LanguageContext'
+import PhotoPlaceholder from '../../components/PhotoPlaceholder'
 import './About.css'
 
 export default function About() {
@@ -30,38 +30,40 @@ export default function About() {
     },
   ]
 
-  const languages = [
-    {
-      flag: '🇫🇷',
-      name: fr ? 'Français' : 'French',
-      level: fr ? 'Natale' : 'Native',
-      bars: 5,
-    },
-    {
-      flag: '🇬🇧',
-      name: fr ? 'Anglais' : 'English',
-      level: fr ? 'Natale' : 'Native',
-      bars: 5,
-    },
-    {
-      flag: '🇲🇺',
-      name: fr ? 'Créole mauricien' : 'Mauritian Creole',
-      level: fr ? 'Natale' : 'Native',
-      bars: 5,
-    },
-    {
-      flag: '🇪🇸',
-      name: fr ? 'Espagnol' : 'Spanish',
-      level: fr ? 'B1 — Intermédiaire' : 'B1 — Intermediate',
-      bars: 4,
-    },
-    {
-      flag: '🇩🇪',
-      name: fr ? 'Allemand' : 'German',
-      level: fr ? 'A1 — Débutant' : 'A1 — Beginner',
-      bars: 1,
-    },
-  ]
+  
+const languages = [
+  {
+    flag: 'fr',
+    name: fr ? 'Français' : 'French',
+    level: fr ? 'Natale' : 'Native',
+    bars: 5,
+  },
+  {
+    flag: 'gb',
+    name: fr ? 'Anglais' : 'English',
+    level: fr ? 'Natale' : 'Native',
+    bars: 5,
+  },
+  {
+    flag: 'mu',
+    name: fr ? 'Créole mauricien' : 'Mauritian Creole',
+    level: fr ? 'Natale' : 'Native',
+    bars: 5,
+  },
+  {
+    flag: 'es',
+    name: fr ? 'Espagnol' : 'Spanish',
+    level: fr ? 'B1 — Intermédiaire' : 'B1 — Intermediate',
+    bars: 4,
+  },
+  {
+    flag: 'de',
+    name: fr ? 'Allemand' : 'German',
+    level: fr ? 'A1 — Débutant' : 'A1 — Beginner',
+    bars: 1,
+  },
+]
+
 
   const interests = [
     {
@@ -225,6 +227,7 @@ export default function About() {
         </div>
       </section>
 
+ 
       {/* MES LANGUES */}
       <section
         id="languages"
@@ -255,11 +258,22 @@ export default function About() {
                 className="about-language-card"
                 key={item.name}
               >
-                <span
-                  className="about-language-flag"
-                  aria-hidden="true"
-                >
-                  {item.flag}
+                <span className="about-language-flag">
+                  <img
+                    src={`https://flagcdn.com/w80/${item.flag}.png`}
+                    alt={fr
+                      ? `Drapeau : ${item.name}`
+                      : `Flag: ${item.name}`}
+                    width="52"
+                    height="36"
+                    loading="lazy"
+                    style={{
+                      display: 'block',
+                      objectFit: 'cover',
+                      borderRadius: '5px',
+                      margin: '0 auto',
+                    }}
+                  />
                 </span>
 
                 <h3>{item.name}</h3>
@@ -289,6 +303,7 @@ export default function About() {
           </div>
         </div>
       </section>
+
 
       {/* AU-DELÀ DE L'INGÉNIERIE */}
       <section id="beyond" className="about-section about-beyond">

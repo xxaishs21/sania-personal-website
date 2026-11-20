@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useLanguage } from '../LanguageContext'
+import { useLanguage } from '../../LanguageContext'
 import './Rodrigues.css'
 
 type Lang = 'fr' | 'en'

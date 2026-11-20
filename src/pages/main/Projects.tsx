@@ -1,6 +1,7 @@
 
 import { useState } from 'react'
-import { useLanguage } from '../LanguageContext'
+import { Link } from 'react-router-dom'
+import { useLanguage } from '../../LanguageContext'
 import './Projects.css'
 
 type Category = 'development' | 'engineering' | 'creative'
@@ -16,6 +17,7 @@ type Project = {
   descriptionFr: string
   descriptionEn: string
   technologies: string[]
+  path?: string
   github?: string
   demo?: string
   featured?: boolean
@@ -25,81 +27,93 @@ const projects: Project[] = [
   {
     id: 1,
     category: 'development',
-    icon: '💻',
-    image: '/images/projects/portfolio.jpg',
-    titleFr: 'Mon portfolio personnel',
-    titleEn: 'My personal portfolio',
+    icon: '🏃',
+    image: '/images/projects/cross-it.jpg',
+    titleFr: 'Cr0ss_iT',
+    titleEn: 'Cr0ss_iT',
     descriptionFr:
-      'Un site web personnel imaginé pour présenter mon univers, mon parcours et mes réalisations.',
+      "Une application de gestion d'événements sportifs : inscriptions, QR codes, chronométrage et résultats des courses.",
     descriptionEn:
-      'A personal website designed to showcase my world, my journey, and my work.',
-    technologies: ['React', 'TypeScript', 'CSS', 'Vite'],
+      'A sports event management application featuring registrations, QR codes, race timing and results.',
+    technologies: ['Python', 'Pygame', 'QR Code', 'Base de données'],
+    github: 'https://github.com/RB-2804/Cr0ss-iT',
     featured: true,
+    path: '/projects/cross-it',
   },
   {
     id: 2,
-    category: 'engineering',
-    icon: '🔧',
-    image: '/images/projects/embedded.jpg',
-    titleFr: 'Projet de systèmes embarqués',
-    titleEn: 'Embedded systems project',
+    category: 'development',
+    icon: '🎬',
+    image: '/images/projects/cinapple.jpg',
+    titleFr: 'Cinapple',
+    titleEn: 'Cinapple',
     descriptionFr:
-      'Un emplacement pour présenter un projet technique autour des microcontrôleurs et de la programmation embarquée.',
+      'Une application de recommandation de films utilisant des algorithmes de machine learning implémentés en Python.',
     descriptionEn:
-      'A placeholder for a technical project involving microcontrollers and embedded programming.',
-    technologies: ['C', 'STM32', 'GPIO'],
+      'A movie recommendation application using machine learning algorithms implemented in Python.',
+    technologies: ['Python', 'Streamlit', 'KNN', 'K-means', 'ID3'],
+    path: '/projects/Cinapple',
+    github: 'https://github.com/xxaishs21/Cinapple',
   },
   {
     id: 3,
-    category: 'development',
-    icon: '🖥️',
-    image: '/images/projects/application.jpg',
-    titleFr: 'Application logicielle',
-    titleEn: 'Software application',
+    category: 'engineering',
+    icon: '🕸️',
+    image: '/images/projects/opti-recom2.png',
+    titleFr: 'Opti-recom',
+    titleEn: 'Opti-recom',
     descriptionFr:
-      'Un emplacement pour une application développée dans le cadre de mes études ou de mes projets personnels.',
+      "Un système de recommandation d'amis fondé sur l'analyse de graphes et la comparaison de différentes stratégies.",
     descriptionEn:
-      'A placeholder for an application developed during my studies or as a personal project.',
-    technologies: ['Python', 'Git'],
+      'A friend recommendation system based on graph analysis and comparisons between recommendation strategies.',
+    technologies: ['Python', 'NetworkX', 'Graphes', 'Algorithmes'],
+    path: '/projects/opti-recom',
+    github: 'https://github.com/xxaishs21/Opti-recom',
   },
   {
     id: 4,
-    category: 'creative',
-    icon: '🎀',
-    image: '/images/projects/journaling.jpg',
-    titleFr: 'Créations & journaling',
-    titleEn: 'Creative projects & journaling',
+    category: 'development',
+    icon: '☕',
+    image: '/images/projects/queuecup.jpg',
+    titleFr: 'QueueCup',
+    titleEn: 'QueueCup',
     descriptionFr:
-      'Un espace pour partager mes créations personnelles, mes carnets et mes idées créatives.',
+      "Une application de café imaginée autour d'un marché où les prix évoluent selon la demande. Un projet développé en équipe.",
     descriptionEn:
-      'A space to share personal creations, journals, and creative ideas.',
-    technologies: ['Design', 'Créativité'],
+      'A café application designed around a market where prices respond to demand. A collaborative project.',
+    technologies: ['React', 'TypeScript', 'Vite', 'CSS'],
+    path: '/projects/queuecup',
+    github: 'https://github.com/Joyswaria/QueueCup',
+    featured: true,
   },
   {
     id: 5,
-    category: 'engineering',
-    icon: '⚡',
-    image: '/images/projects/electronics.jpg',
-    titleFr: 'Conception numérique',
-    titleEn: 'Digital design',
+    category: 'creative',
+    icon: '🎮',
+    image: '/images/projects/ndc/gameplay.png',
+    titleFr: 'Nuit du Code 2024',
+    titleEn: 'Nuit du Code 2024',
     descriptionFr:
-      'Un emplacement pour mettre en valeur un projet de logique numérique ou de conception de circuits.',
+      "Finding a Treasure in the Void : un jeu d'exploration et de minage en pixel art, développé en équipe pendant la Nuit du Code.",
     descriptionEn:
-      'A placeholder for a project involving digital logic or circuit design.',
-    technologies: ['Logique numérique', 'Électronique'],
+      'Finding a Treasure in the Void: a pixel-art exploration and mining game developed as a team during Nuit du Code.',
+    technologies: ['Python', 'Pyxel', 'Game Development'],
+    github: 'https://github.com/xxaishs21/Nuit-du-code-2024',
+    path: '/projects/ndc',
   },
   {
     id: 6,
     category: 'creative',
-    icon: '✨',
-    image: '/images/projects/personal.jpg',
-    titleFr: 'Projet créatif personnel',
-    titleEn: 'Personal creative project',
+    icon: '🌊',
+    image: '/images/projects/rodrigues1.png',
+    titleFr: "Les Assises de l'Eau — Rodrigues",
+    titleEn: 'Water Forum — Rodrigues',
     descriptionFr:
-      'Un emplacement libre pour une idée, une création ou une réalisation que je souhaite partager.',
+      "Une expérience éducative à Rodrigues consacrée aux enjeux de l'eau, à l'environnement et à la sensibilisation.",
     descriptionEn:
-      'An open space for an idea, a creation, or something I would like to share.',
-    technologies: ['Créativité', 'Projet personnel'],
+      'An educational experience in Rodrigues focused on water challenges, environmental issues and awareness.',
+    technologies: ['Environnement', 'Recherche', 'Présentation'],
+    path: '/projects/rodrigues-water',
   },
 ]
 
@@ -174,6 +188,7 @@ export default function Projects() {
   return (
     <main className="projects-page">
       {/* INTRODUCTION */}
+
       <header className="projects-intro">
         <p className="projects-eyebrow">
           {fr ? 'MES RÉALISATIONS ✧' : 'MY WORK ✧'}
@@ -184,11 +199,12 @@ export default function Projects() {
         <p className="projects-intro-description">
           {fr
             ? "Des idées, du code et beaucoup de curiosité. Découvrez un aperçu de ce que j'aime imaginer et construire."
-            : "Ideas, code, and plenty of curiosity. Explore a glimpse of what I love to imagine and build."}
+            : 'Ideas, code, and plenty of curiosity. Explore a glimpse of what I love to imagine and build.'}
         </p>
       </header>
 
       {/* PROJECT GALLERY */}
+
       <section className="projects-gallery-section">
         <div className="projects-gallery-heading">
           <p className="projects-eyebrow">
@@ -206,7 +222,8 @@ export default function Projects() {
           </p>
         </div>
 
-        {/* INTERACTIVE FILTERS */}
+        {/* FILTERS */}
+
         <div
           className="projects-filters"
           role="group"
@@ -227,12 +244,16 @@ export default function Projects() {
           ))}
         </div>
 
+        {/* PROJECT CARDS */}
+
         <div className="projects-grid">
           {visibleProjects.map((project) => {
             const title = fr ? project.titleFr : project.titleEn
             const description = fr
               ? project.descriptionFr
               : project.descriptionEn
+
+            const cardDestination = project.path || project.github
 
             return (
               <article
@@ -241,6 +262,27 @@ export default function Projects() {
                 }`}
                 key={project.id}
               >
+                {/* CLICKABLE CARD OVERLAY */}
+
+                {cardDestination &&
+                  (project.path ? (
+                    <Link
+                      to={project.path}
+                      className="projects-card-overlay"
+                      aria-label={`${fr ? 'Voir le projet' : 'View project'} : ${title}`}
+                    />
+                  ) : (
+                    <a
+                      href={cardDestination}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="projects-card-overlay"
+                      aria-label={`${fr ? 'Voir le projet sur GitHub' : 'View project on GitHub'} : ${title}`}
+                    />
+                  ))}
+
+                {/* PROJECT IMAGE */}
+
                 <div className="projects-card-image">
                   <ProjectVisual
                     key={project.image}
@@ -257,12 +299,15 @@ export default function Projects() {
                   )}
                 </div>
 
+                {/* CARD CONTENT */}
+
                 <div className="projects-card-content">
                   <p className="projects-category">
                     {categoryLabels[project.category]}
                   </p>
 
                   <h3>{title}</h3>
+
                   <p className="projects-card-description">
                     {description}
                   </p>
@@ -273,34 +318,46 @@ export default function Projects() {
                     ))}
                   </div>
 
-                  {(project.github || project.demo) && (
-                    <div className="projects-card-links">
-                      {project.github && (
-                        <a
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          GitHub ↗
-                        </a>
-                      )}
+                  {/* CARD LINKS */}
 
-                      {project.demo && (
-                        <a
-                          href={project.demo}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {fr ? 'Voir la démo ↗' : 'Live demo ↗'}
-                        </a>
-                      )}
-                    </div>
-                  )}
+                  <div className="projects-card-links">
+                    {project.path && (
+                      <Link
+                        to={project.path}
+                        className="projects-card-primary-link"
+                      >
+                        {fr ? 'Voir le projet →' : 'View project →'}
+                      </Link>
+                    )}
+
+                    {project.demo && (
+                      <Link
+                        to={project.demo}
+                        className="projects-card-demo-link"
+                      >
+                        {fr
+                          ? "Essayer l'application ↗"
+                          : 'Try the application ↗'}
+                      </Link>
+                    )}
+
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        GitHub ↗
+                      </a>
+                    )}
+                  </div>
                 </div>
               </article>
             )
           })}
         </div>
+
+        {/* PROJECT COUNT */}
 
         <p className="projects-count" aria-live="polite">
           {fr
@@ -314,6 +371,7 @@ export default function Projects() {
       </section>
 
       {/* CLOSING */}
+
       <section className="projects-closing-section">
         <div className="projects-closing-content">
           <p className="projects-eyebrow">
@@ -328,8 +386,8 @@ export default function Projects() {
 
           <p>
             {fr
-              ? "J'aime apprendre en expérimentant, et chaque nouveau projet est une occasion de progresser."
-              : "I love learning by experimenting, and every new project is an opportunity to grow."}
+              ? "J'aime apprendre en expérimentant, ça permet de voir et de comprendre réellement les choses."
+              : 'I love learning by experimenting, and every new project is an opportunity to grow.'}
           </p>
 
           <a

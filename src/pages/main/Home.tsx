@@ -1,6 +1,6 @@
 
 import { Link } from 'react-router-dom'
-import { useLanguage } from '../LanguageContext'
+import { useLanguage } from '../../LanguageContext'
 
 export default function Home() {
   const { language } = useLanguage()
@@ -56,7 +56,7 @@ export default function Home() {
 
           <div className="home-photo-frame">
             <img
-              src="/images/profile.jpg"
+              src="/images/profile.jpeg"
               alt={
                 isFrench
                   ? 'Portrait de Sania'

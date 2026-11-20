@@ -133,6 +133,7 @@
 }
 
 .projects-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -151,6 +152,31 @@
   border-color: #d9bce9;
   box-shadow: 0 20px 45px rgba(118, 82, 143, 0.13);
 }
+
+/* CLICKABLE CARD OVERLAY */
+
+.projects-card-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  cursor: pointer;
+}
+
+.projects-card-overlay:focus-visible {
+  outline: 3px solid var(--purple-dark);
+  outline-offset: -4px;
+}
+
+.projects-card:has(.projects-card-overlay) {
+  cursor: pointer;
+}
+
+.projects-card:focus-within {
+  border-color: var(--purple-dark);
+}
+
+/* PROJECT IMAGES */
 
 .projects-card-image {
   position: relative;
@@ -198,19 +224,43 @@
   font-weight: 600;
 }
 
+/* IMAGE DISPLAY AND HOVER EFFECT */
+
 .projects-visual img {
   position: absolute;
   inset: 0;
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   opacity: 0;
-  transition: opacity 0.35s ease;
+  transition:
+    opacity 0.35s ease,
+    transform 0.5s ease;
 }
 
 .projects-visual img.projects-image-loaded {
   opacity: 1;
 }
+
+.projects-card:hover .projects-visual img.projects-image-loaded {
+  transform: scale(1.045);
+}
+
+/* NUIT DU CODE — PRESERVE PIXEL ART */
+
+.projects-card:has(a[href="/projects/ndc"]) .projects-visual {
+  background: linear-gradient(135deg, #29243d, #171526);
+}
+
+.projects-card:has(a[href="/projects/ndc"]) .projects-visual img {
+  object-fit: contain;
+  padding: 12px;
+  image-rendering: pixelated;
+}
+
+/* FEATURED BADGE */
 
 .projects-featured-badge {
   position: absolute;
@@ -223,7 +273,10 @@
   font-size: 0.75rem;
   font-weight: 700;
   box-shadow: 0 4px 14px rgba(118, 82, 143, 0.12);
+  pointer-events: none;
 }
+
+/* CARD CONTENT */
 
 .projects-card-content {
   display: flex;
@@ -273,10 +326,15 @@
   font-weight: 600;
 }
 
+/* CARD LINKS */
+
 .projects-card-links {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-wrap: wrap;
-  gap: 18px;
+  align-items: center;
+  gap: 12px 18px;
   margin-top: 24px;
   padding-top: 18px;
   border-top: 1px solid #ead8f1;
@@ -291,6 +349,27 @@
 
 .projects-card-links a:hover {
   text-decoration: underline;
+}
+
+.projects-card-links .projects-card-demo-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 14px;
+  border-radius: 999px;
+  background: var(--purple-dark);
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.projects-card-links .projects-card-demo-link:hover {
+  transform: translateY(-2px);
+  background: #8f66ae;
+  text-decoration: none;
 }
 
 /* PROJECT COUNT */
@@ -352,13 +431,15 @@
   box-shadow: 0 10px 25px rgba(118, 82, 143, 0.2);
 }
 
-/* RESPONSIVE */
+/* RESPONSIVE — TABLET */
 
 @media (max-width: 1000px) {
   .projects-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+/* RESPONSIVE — MOBILE */
 
 @media (max-width: 650px) {
   .projects-intro {
@@ -394,7 +475,12 @@
   .projects-filter,
   .projects-card,
   .projects-visual img,
-  .projects-github-button {
+  .projects-github-button,
+  .projects-card-links .projects-card-demo-link {
     transition: none;
+  }
+
+  .projects-card:hover .projects-visual img {
+    transform: none;
   }
 }
