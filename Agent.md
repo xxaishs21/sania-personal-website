@@ -21,4 +21,10 @@ Connectez-vous, cochez CV et Contact, puis passez de 7 à 30 jours. Déconnectez
 - `admin/traffic.mjs` utilise `POSTHOG_PROJECT_ID` et `POSTHOG_PERSONAL_API_KEY` côté serveur pour compter les vues du domaine par page et par jour. Gardez la clé personnelle dans l’environnement serveur. Le rapport est conservé en mémoire 24 heures. Le bouton **Actualiser** demande une nouvelle lecture via `POST /admin/data`.
 - Pour la démo, laissez les deux variables de lecture PostHog absentes. Le graphique indique alors que les chiffres sont fictifs. Pour ajouter une page à comparer, reprenez son chemin dans le routeur du portfolio et ajoutez-le à la liste `pages` de `admin/traffic.mjs`.
 
-Cette version de l’admin écoute sur l’adresse locale du PC. La mise en ligne de `/admin` sur Railway et la validation avec les données réelles constituent une étape ultérieure.
+## Publier le portfolio et l’admin sur Railway
+
+Dans le service Railway associé à `saniamattan.com`, définissez `ADMIN_PASSWORD` dans **Variables** avec un mot de passe privé réservé à la production. Configurez les variables PostHog décrites ci-dessus pour compter et afficher les vues réelles.
+
+Après fusion, vérifiez que le déploiement du service suit le nouveau commit de `main`. Le fichier `railway.toml` lance `npm run build` puis `npm start`. Ce serveur écoute sur `PORT`, sert le portfolio compilé et traite les requêtes sous `/admin`. Si le mot de passe manque, l’admin répond 503 et le portfolio reste disponible.
+
+Après déploiement, ouvrez `https://saniamattan.com/cv` puis `https://saniamattan.com/admin` dans une fenêtre privée. Vérifiez que la première adresse affiche le CV et que la seconde demande le code. Connectez-vous puis déconnectez-vous et vérifiez que les données sont à nouveau protégées.
