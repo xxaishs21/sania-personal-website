@@ -1,15 +1,20 @@
 import { createHash, randomBytes, timingSafeEqual } from 'node:crypto'
 import { createServer } from 'node:http'
 import { readFile } from 'node:fs/promises'
+import { fileURLToPath } from 'node:url'
+import sirv from 'sirv'
 import { traffic } from './traffic.mjs'
 
 const chartScript = await readFile(new URL('./chart.js', import.meta.url))
 
-const port = Number(process.env.ADMIN_PORT || 5174)
+const servePortfolio = process.argv.includes('--portfolio')
+const publicFiles = servePortfolio && sirv(fileURLToPath(new URL('../dist/', import.meta.url)), {
+  single: true, etag: true,
+})
+const port = Number(servePortfolio ? process.env.PORT || 8080 : process.env.ADMIN_PORT || 5174)
 const host = `127.0.0.1:${port}`
-const origin = `http://${host}`
 const password = process.env.ADMIN_PASSWORD
-if (!password) throw new Error('Définis ADMIN_PASSWORD dans .env.local ou dans ton environnement.')
+if (!password && !servePortfolio) throw new Error('Définis ADMIN_PASSWORD dans .env.local ou dans ton environnement.')
 const sessionSeconds = 30 * 60
 const sessions = new Map()
 
@@ -83,7 +88,7 @@ function dashboard() {
 }
 
 function cookie(response, value, maxAge) {
-  response.setHeader('Set-Cookie', `sania_admin_demo=${value}; Path=/admin; HttpOnly; SameSite=Strict; Max-Age=${maxAge}`)
+  response.setHeader('Set-Cookie', `sania_admin_demo=${value}; Path=/admin; HttpOnly; SameSite=Strict; Max-Age=${maxAge}${servePortfolio ? '; Secure' : ''}`)
 }
 
 function redirect(response) {
@@ -91,28 +96,38 @@ function redirect(response) {
 }
 
 const hash = value => createHash('sha256').update(value).digest()
-const passwordHash = hash(password)
+const passwordHash = password ? hash(password) : null
 
 const server = createServer(async (request, response) => {
+  if (!request.url?.startsWith('/') || !request.headers.host || (!servePortfolio && request.headers.host !== host)) {
+    return response.writeHead(400).end()
+  }
+  const path = request.url.split('?', 1)[0]
+  if (servePortfolio && path !== '/admin' && !path.startsWith('/admin/')) {
+    if (!['GET', 'HEAD'].includes(request.method)) return response.writeHead(405, { Allow: 'GET, HEAD' }).end()
+    return publicFiles(request, response)
+  }
+  const origin = servePortfolio ? `https://${request.headers.host}` : `http://${host}`
   response.setHeader('Cache-Control', 'no-store')
   response.setHeader('X-Content-Type-Options', 'nosniff')
   response.setHeader('Content-Security-Policy', "default-src 'none'; style-src 'unsafe-inline'; script-src 'self'; connect-src 'self'; form-action 'self'; frame-ancestors 'none'")
-  if (request.headers.host !== host || !request.url?.startsWith('/')) return response.writeHead(400).end()
-  const url = new URL(origin + request.url)
+  if (!passwordHash) {
+    return response.writeHead(503, { 'Content-Type': 'text/plain; charset=utf-8' }).end('Accès admin temporairement indisponible.')
+  }
   const now = Date.now()
   const token = request.headers.cookie?.match(/(?:^|;\s*)sania_admin_demo=([a-f0-9]{48})(?:;|$)/)?.[1]
   const authenticated = token !== undefined && (sessions.get(token) ?? 0) > now
 
-  if (request.method === 'GET' && url.pathname === '/') return redirect(response)
-  if (request.method === 'GET' && url.pathname === '/admin') {
+  if (request.method === 'GET' && path === '/') return redirect(response)
+  if (['GET', 'HEAD'].includes(request.method) && (path === '/admin' || path === '/admin/')) {
     response.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' })
     return response.end(authenticated ? dashboard() : login())
   }
-  if (request.method === 'GET' && url.pathname === '/admin/chart.js') {
+  if (request.method === 'GET' && path === '/admin/chart.js') {
     response.writeHead(200, { 'Content-Type': 'text/javascript; charset=utf-8' }).end(chartScript)
     return
   }
-  if (url.pathname === '/admin/data' && ['GET', 'POST'].includes(request.method)) {
+  if (path === '/admin/data' && ['GET', 'POST'].includes(request.method)) {
     if (!authenticated) return response.writeHead(401).end()
     const refresh = request.method === 'POST'
     if (refresh && request.headers.origin !== origin) return response.writeHead(403).end()
@@ -123,13 +138,13 @@ const server = createServer(async (request, response) => {
       return response.writeHead(503).end()
     }
   }
-  if (request.method !== 'POST' || !['/admin/login', '/admin/logout'].includes(url.pathname)) {
+  if (request.method !== 'POST' || !['/admin/login', '/admin/logout'].includes(path)) {
     return response.writeHead(404).end()
   }
   if (request.headers.origin !== origin || request.headers['content-type']?.split(';')[0] !== 'application/x-www-form-urlencoded') {
     return response.writeHead(403).end()
   }
-  if (url.pathname === '/admin/logout') {
+  if (path === '/admin/logout') {
     if (token) sessions.delete(token)
     cookie(response, '', 0)
     return redirect(response)
@@ -160,4 +175,6 @@ const server = createServer(async (request, response) => {
   }
 })
 
-server.listen(port, '127.0.0.1', () => console.log(`Démo admin disponible sur ${origin}/admin`))
+server.listen(port, servePortfolio ? '0.0.0.0' : '127.0.0.1', () => {
+  console.log(servePortfolio ? `Portfolio et /admin sur le port ${port}` : `Admin disponible sur http://${host}/admin`)
+})
