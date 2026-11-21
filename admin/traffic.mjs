@@ -15,19 +15,19 @@ export const pages = [
 
 const query = `
   SELECT day, path, views FROM (
-  SELECT toString(toDate(timestamp, 'Europe/Paris')) AS day,
-         lower(properties.$pathname) AS path, count() AS views
+  SELECT toString(toDate(toTimeZone(timestamp, 'Europe/Paris'))) AS day,
+         replaceRegexpOne(lower(properties.$pathname), '/+$', '') AS path, count() AS views
   FROM events
   WHERE event = '$pageview'
     AND properties.$host IN ('saniamattan.com', 'www.saniamattan.com')
-    AND timestamp >= toDateTime(toDate(now(), 'Europe/Paris') - 29, 'Europe/Paris')
+    AND toDate(toTimeZone(timestamp, 'Europe/Paris')) >= toDate(toTimeZone(now(), 'Europe/Paris')) - INTERVAL 29 DAY
+    AND replaceRegexpOne(lower(properties.$pathname), '/+$', '') IN (${pages.map(([path]) => "'" + (path === '/' ? '' : path) + "'").join(', ')})
   GROUP BY day, path
   UNION ALL
-  SELECT toString(toDate(min(timestamp), 'Europe/Paris')), '__first__', count()
+  SELECT toString(toDate(toTimeZone(min(timestamp), 'Europe/Paris'))) AS day, '__first__' AS path, count() AS views
   FROM events
   WHERE event = '$pageview' AND properties.$host IN ('saniamattan.com', 'www.saniamattan.com')
   )
-  WHERE path = '__first__' OR replaceRegexpOne(path, '/+$', '') IN (${pages.map(([path]) => "'" + (path === '/' ? '' : path) + "'").join(', ')})
   LIMIT 1000
 `
 
@@ -49,7 +49,10 @@ async function loadTraffic() {
     body: JSON.stringify({ query: { kind: 'HogQLQuery', query }, refresh: 'force_blocking' }),
     signal: AbortSignal.timeout(20000), redirect: 'error',
   })
-  if (!response.ok) throw new Error('Lecture PostHog indisponible.')
+  if (!response.ok) {
+    console.error(`PostHog Query API : HTTP ${response.status}`)
+    throw new Error('Lecture PostHog indisponible.')
+  }
   const { results } = await response.json()
   if (!Array.isArray(results)) throw new Error('Réponse PostHog incomplète.')
   for (const [date, rawPath, count] of results) {
