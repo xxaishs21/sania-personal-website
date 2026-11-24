@@ -5,16 +5,20 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "start": "node admin/server.mjs --portfolio",
+    "admin": "node --env-file-if-exists=.env.local admin/server.mjs",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
     "lucide-react": "^1.72.0",
+    "posthog-js": "^1.453.1",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "react-icons": "^5.7.0",
-    "react-router-dom": "^7.18.5"
+    "react-router-dom": "^7.18.5",
+    "sirv": "^3.0.2"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
