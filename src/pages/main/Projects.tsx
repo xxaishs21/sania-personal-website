@@ -28,7 +28,7 @@ const projects: Project[] = [
     id: 1,
     category: 'development',
     icon: '🏃',
-    image: '/images/projects/cross-it.jpg',
+    image: '/images/projects/cross-it.png',
     titleFr: 'Cr0ss_iT',
     titleEn: 'Cr0ss_iT',
     descriptionFr:
@@ -44,7 +44,7 @@ const projects: Project[] = [
     id: 2,
     category: 'development',
     icon: '🎬',
-    image: '/images/projects/cinapple.jpg',
+    image: '/images/projects/cinapple.png',
     titleFr: 'Cinapple',
     titleEn: 'Cinapple',
     descriptionFr:

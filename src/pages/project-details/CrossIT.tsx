@@ -7,6 +7,7 @@ type Lang = 'fr' | 'en'
 type Localized = Record<Lang, string>
 
 const githubUrl = 'https://github.com/RB-2804/Cr0ss-iT'
+const imagePath = '/images/projects/crossit/'
 
 const features: {
   number: string
@@ -38,12 +39,12 @@ const features: {
   {
     number: '03',
     title: {
-      fr: 'Chronométrage et QR codes',
-      en: 'Timing and QR codes',
+      fr: 'Départ, chronométrage et QR codes',
+      en: 'Race starts, timing and QR codes',
     },
     description: {
-      fr: "Exploiter les QR codes et la caméra dans le processus de suivi des participants et de chronométrage.",
-      en: 'Use QR codes and a camera to support participant tracking and race timing.',
+      fr: "Lancer les épreuves et exploiter les QR codes et la caméra pour le suivi des participants et le chronométrage.",
+      en: 'Start races and use QR codes and a camera for participant tracking and timing.',
     },
   },
   {
@@ -53,7 +54,7 @@ const features: {
       en: 'Results and rankings',
     },
     description: {
-      fr: "Consulter les résultats des épreuves et mettre en valeur les meilleurs temps.",
+      fr: 'Consulter les résultats des épreuves et mettre en valeur les meilleurs temps.',
       en: 'View race results and highlight the best finishing times.',
     },
   },
@@ -65,47 +66,47 @@ const screenshots: {
   description: Localized
 }[] = [
   {
-    src: '/images/projects/crossit/inscriptions.png',
+    src: `${imagePath}inscriptions.png`,
     title: {
       fr: 'Inscriptions',
       en: 'Registrations',
     },
     description: {
-      fr: 'Interface de gestion des participants.',
-      en: 'Participant management interface.',
+      fr: "Inscription individuelle, sélection des classes et importation des participants depuis un fichier.",
+      en: 'Individual registration, class selection and participant imports from a file.',
     },
   },
   {
-    src: '/images/projects/crossit/courses.png',
+    src: `${imagePath}courses.png`,
     title: {
-      fr: 'Organisation',
-      en: 'Organization',
+      fr: 'Organisation des courses',
+      en: 'Race organization',
     },
     description: {
-      fr: 'Préparation et gestion des courses.',
-      en: 'Race preparation and management.',
+      fr: 'Sélection des épreuves, gestion des participants et préparation du départ.',
+      en: 'Race selection, participant management and start preparation.',
     },
   },
   {
-    src: '/images/projects/crossit/chronometrage.png',
+    src: `${imagePath}depart.png`,
     title: {
-      fr: 'Chronométrage',
-      en: 'Timing',
+      fr: 'Départ de la course',
+      en: 'Race start',
     },
     description: {
-      fr: 'Fonctionnalités liées au suivi des courses.',
-      en: 'Features supporting race tracking.',
+      fr: 'Affichage des participants et lancement de la course.',
+      en: 'Participant overview and race start controls.',
     },
   },
   {
-    src: '/images/projects/crossit/resultats.png',
+    src: `${imagePath}classement.png`,
     title: {
-      fr: 'Résultats',
-      en: 'Results',
+      fr: 'Classement',
+      en: 'Rankings',
     },
     description: {
-      fr: 'Affichage des classements et des temps.',
-      en: 'Display of rankings and finishing times.',
+      fr: 'Consultation du classement des participants pour une épreuve sélectionnée.',
+      en: 'View participant rankings for a selected race.',
     },
   },
 ]
@@ -134,9 +135,7 @@ export default function CrossIT() {
                   : 'SOFTWARE DEVELOPMENT · PYTHON'}
               </span>
 
-              <h1>
-                Cr0ss_iT
-              </h1>
+              <h1>Cr0ss_iT</h1>
 
               <p className="crossit-subtitle">
                 {fr
@@ -240,6 +239,25 @@ export default function CrossIT() {
                 : 'The central idea: support organizers throughout the event, from registration to results.'}
             </p>
           </div>
+
+          {/* CAPTURE PRINCIPALE */}
+
+          <figure className="crossit-main-preview">
+            <img
+              src={`${imagePath}cross-it.png`}
+              alt={
+                fr
+                  ? "Écran d'accueil de l'application Cr0ss-iT"
+                  : 'Cr0ss-iT application home screen'
+              }
+              loading="lazy"
+            />
+            <figcaption>
+              {fr
+                ? "L'écran d'accueil de Cr0ss-iT"
+                : 'The Cr0ss-iT home screen'}
+            </figcaption>
+          </figure>
         </div>
       </section>
 
@@ -267,7 +285,10 @@ export default function CrossIT() {
 
           <div className="crossit-feature-grid">
             {features.map((feature) => (
-              <article className="crossit-feature-card" key={feature.number}>
+              <article
+                className="crossit-feature-card"
+                key={feature.number}
+              >
                 <span className="crossit-feature-number">
                   {feature.number}
                 </span>
@@ -297,8 +318,8 @@ export default function CrossIT() {
 
             <p>
               {fr
-                ? "Quelques écrans de l'application Cr0ss-iT."
-                : 'A selection of screens from Cr0ss-iT.'}
+                ? "Découvrez les différentes étapes de gestion d'une course dans Cr0ss-iT."
+                : 'Explore the different stages of race management in Cr0ss-iT.'}
             </p>
           </div>
 
@@ -362,7 +383,7 @@ export default function CrossIT() {
                   <h3>Python</h3>
                   <p>
                     {fr
-                      ? 'Logique et fonctionnalités de l’application'
+                      ? "Logique et fonctionnalités de l'application"
                       : 'Application logic and features'}
                   </p>
                 </div>
@@ -424,7 +445,7 @@ export default function CrossIT() {
 
           <p>
             {fr
-              ? "Retrouvez le code source et les informations complémentaires du projet dans son dépôt GitHub."
+              ? 'Retrouvez le code source et les informations complémentaires du projet dans son dépôt GitHub.'
               : 'Find the source code and additional project information in its GitHub repository.'}
           </p>
 

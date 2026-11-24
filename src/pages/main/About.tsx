@@ -30,40 +30,38 @@ export default function About() {
     },
   ]
 
-  
-const languages = [
-  {
-    flag: 'fr',
-    name: fr ? 'Français' : 'French',
-    level: fr ? 'Natale' : 'Native',
-    bars: 5,
-  },
-  {
-    flag: 'gb',
-    name: fr ? 'Anglais' : 'English',
-    level: fr ? 'Natale' : 'Native',
-    bars: 5,
-  },
-  {
-    flag: 'mu',
-    name: fr ? 'Créole mauricien' : 'Mauritian Creole',
-    level: fr ? 'Natale' : 'Native',
-    bars: 5,
-  },
-  {
-    flag: 'es',
-    name: fr ? 'Espagnol' : 'Spanish',
-    level: fr ? 'B1 — Intermédiaire' : 'B1 — Intermediate',
-    bars: 4,
-  },
-  {
-    flag: 'de',
-    name: fr ? 'Allemand' : 'German',
-    level: fr ? 'A1 — Débutant' : 'A1 — Beginner',
-    bars: 1,
-  },
-]
-
+  const languages = [
+    {
+      flag: 'fr',
+      name: fr ? 'Français' : 'French',
+      level: fr ? 'Natale' : 'Native',
+      bars: 5,
+    },
+    {
+      flag: 'gb',
+      name: fr ? 'Anglais' : 'English',
+      level: fr ? 'Natale' : 'Native',
+      bars: 5,
+    },
+    {
+      flag: 'mu',
+      name: fr ? 'Créole mauricien' : 'Mauritian Creole',
+      level: fr ? 'Natale' : 'Native',
+      bars: 5,
+    },
+    {
+      flag: 'es',
+      name: fr ? 'Espagnol' : 'Spanish',
+      level: fr ? 'B1 — Intermédiaire' : 'B1 — Intermediate',
+      bars: 4,
+    },
+    {
+      flag: 'de',
+      name: fr ? 'Allemand' : 'German',
+      level: fr ? 'A1 — Débutant' : 'A1 — Beginner',
+      bars: 1,
+    },
+  ]
 
   const interests = [
     {
@@ -130,7 +128,7 @@ const languages = [
         <div className="about-section-inner about-split">
           <div className="about-copy">
             <p className="about-eyebrow">
-              {fr ? 'ENCHANTÉE ✧' : 'NICE TO MEET YOU ✧'}
+              {fr ? '✧ SALUT ✧' : '✧ NICE TO MEET YOU ✧'}
             </p>
 
             <h2>
@@ -203,7 +201,7 @@ const languages = [
 
           <div className="about-copy">
             <p className="about-eyebrow">
-              {fr ? 'MON HISTOIRE ✧' : 'MY STORY ✧'}
+              {fr ? '✧ MON HISTOIRE ✧' : '✧ MY STORY ✧'}
             </p>
 
             <h2>
@@ -227,7 +225,6 @@ const languages = [
         </div>
       </section>
 
- 
       {/* MES LANGUES */}
       <section
         id="languages"
@@ -235,8 +232,11 @@ const languages = [
       >
         <div className="about-section-inner">
           <div className="about-centered-heading">
+
             <p className="about-eyebrow">
-              BETWEEN CULTURES ✧
+              {fr
+                ? "✧ ENTRES LES CULTURES ✧"
+                : '✧ BETWEEN   CULTURES ✧'}
             </p>
 
             <h2>
@@ -261,9 +261,11 @@ const languages = [
                 <span className="about-language-flag">
                   <img
                     src={`https://flagcdn.com/w80/${item.flag}.png`}
-                    alt={fr
-                      ? `Drapeau : ${item.name}`
-                      : `Flag: ${item.name}`}
+                    alt={
+                      fr
+                        ? `Drapeau : ${item.name}`
+                        : `Flag: ${item.name}`
+                    }
                     width="52"
                     height="36"
                     loading="lazy"
@@ -304,15 +306,14 @@ const languages = [
         </div>
       </section>
 
-
       {/* AU-DELÀ DE L'INGÉNIERIE */}
       <section id="beyond" className="about-section about-beyond">
         <div className="about-section-inner">
           <div className="about-centered-heading">
             <p className="about-eyebrow">
               {fr
-                ? "AU-DELÀ DE L'INGÉNIERIE ✧"
-                : 'BEYOND ENGINEERING ✧'}
+                ? "✧ AU-DELÀ DE L'INGÉNIERIE ✧"
+                : '✧ BEYOND ENGINEERING ✧'}
             </p>
 
             <h2>
@@ -344,36 +345,6 @@ const languages = [
               </article>
             ))}
           </div>
-
-          {/* GALERIE DE PASSIONS */}
-          <div className="about-hobby-gallery">
-            <PhotoPlaceholder
-              src="/images/about/journaling.jpg"
-              alt={
-                fr
-                  ? 'Mon univers de journaling'
-                  : 'My journaling world'
-              }
-              icon="📓"
-              label={fr ? 'Mon journaling' : 'My journaling'}
-            />
-
-            <PhotoPlaceholder
-              src="/images/about/reading.jpg"
-              alt={fr ? 'Mes lectures' : 'My books'}
-              icon="📚"
-              label={fr ? 'Mes lectures' : 'My books'}
-            />
-
-            <PhotoPlaceholder
-              src="/images/about/gaming.jpg"
-              alt={fr ? 'Mon univers gaming' : 'My gaming world'}
-              icon="🎮"
-              label={
-                fr ? 'Mon univers gaming' : 'My gaming world'
-              }
-            />
-          </div>
         </div>
       </section>
 
@@ -385,12 +356,12 @@ const languages = [
         <div className="about-section-inner about-centered-heading">
           <p className="about-eyebrow">
             {fr
-              ? 'LES PETITES CHOSES ✧'
-              : 'THE LITTLE THINGS ✧'}
+              ? '✧ LES PETITES CHOSES ✧'
+              : '✧ THE LITTLE THINGS ✧'}
           </p>
 
           <h2>
-            {fr ? 'Mes petits bonheurs' : 'Little things I love'}
+            {fr ? 'Mes chouchous' : 'Little joys'}
           </h2>
 
           <div className="about-favorites-list">
