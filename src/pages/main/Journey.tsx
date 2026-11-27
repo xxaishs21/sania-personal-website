@@ -40,11 +40,6 @@ type TimelineEntry = {
   details?: Localized[]
 }
 
-const pending: Localized = {
-  fr: 'À préciser',
-  en: 'To be confirmed',
-}
-
 const entries: TimelineEntry[] = [
   {
     id: 'centrale',
@@ -444,16 +439,38 @@ const entries: TimelineEntry[] = [
   },
   {
     id: 'brevet',
-    date: pending,
+    date: {
+      fr: '2021',
+      en: '2021',
+    },
     category: 'education',
     compact: true,
     title: {
-      fr: 'Brevet',
-      en: 'Lower secondary school diploma',
+      fr: 'Diplôme national du brevet',
+      en: 'French National Lower Secondary School Diploma',
     },
-    subtitle: pending,
-    description: pending,
-    details: [pending],
+    subtitle: {
+      fr: 'Série générale · Mention Très Bien',
+      en: 'General track · Highest Honours',
+    },
+    description: {
+      fr: `J'ai obtenu le diplôme national du brevet (DNB), série générale, avec la mention Très Bien, le 1er juillet 2021. Ce diplôme, délivré par l'Académie de La Réunion, marque la fin de mon parcours au collège et une première étape importante de ma scolarité.`,
+      en: `I earned the French National Lower Secondary School Diploma (Diplôme national du brevet), general track, with Highest Honours (Très Bien) on 1 July 2021. Issued by the Académie de La Réunion, this diploma marked the completion of my lower secondary education and an important milestone in my academic journey.`,
+    },
+    details: [
+      {
+        fr: 'Mention Très Bien',
+        en: 'Highest Honours',
+      },
+      {
+        fr: 'Académie de La Réunion',
+        en: 'Académie de La Réunion',
+      },
+      {
+        fr: 'Obtenu le 1er juillet 2021',
+        en: 'Awarded on 1 July 2021',
+      },
+    ],
   },
 ]
 
