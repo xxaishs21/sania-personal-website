@@ -5,34 +5,48 @@
    ======================================== */
 
 /* ========================================
-   1. NAVBAR MODE SWITCHER
+   1. NAVBAR — BRAND + VISITOR SWITCH
    ======================================== */
+
+.site-header .nav-brand-group {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 24px;
+}
 
 .site-header .visitor-navbar-switch {
   display: inline-flex;
   align-items: center;
+  flex-shrink: 0;
   gap: 3px;
   padding: 4px;
-  border: 1px solid var(--color-border);
+  border: 1px solid #efdce3;
   border-radius: 999px;
-  background: #f9e4eb;
+  background: #f9e9ef;
+  box-shadow: none;
   white-space: nowrap;
 }
 
 .site-header .visitor-navbar-switch button {
+  appearance: none;
+  -webkit-appearance: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  padding: 9px 12px;
-  border: none;
+  gap: 7px;
+  min-height: 32px;
+  padding: 8px 13px;
+  border: 0;
   border-radius: 999px;
   background: transparent;
-  color: #a8798b;
-  font-family: var(--font-body);
+  box-shadow: none;
+  color: #977987;
+  font-family: inherit;
   font-size: 0.76rem;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1;
+  cursor: pointer;
   transition:
     background 0.2s ease,
     color 0.2s ease,
@@ -40,13 +54,20 @@
 }
 
 .site-header .visitor-navbar-switch button.active {
-  background: white;
-  color: var(--color-primary);
-  box-shadow: 0 2px 8px rgba(121, 52, 79, 0.12);
+  background: #ffffff;
+  color: #79344f;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(121, 52, 79, 0.1);
 }
 
-.site-header .visitor-navbar-switch button:hover {
-  color: var(--color-primary);
+.site-header .visitor-navbar-switch button:hover:not(.active) {
+  background: rgba(255, 255, 255, 0.45);
+  color: #79344f;
+}
+
+.site-header .visitor-navbar-switch button:focus-visible {
+  outline: 2px solid #b84c70;
+  outline-offset: 2px;
 }
 
 /* ========================================
@@ -126,7 +147,7 @@
   border: 1px solid var(--color-border);
   border-radius: 20px;
   background: white;
-  box-shadow: var(--shadow-soft);
+  box-shadow: 0 5px 20px rgba(121, 52, 79, 0.06);
   transition:
     transform 0.25s ease,
     box-shadow 0.25s ease;
@@ -134,7 +155,7 @@
 
 .home-featured-card:hover {
   transform: translateY(-5px);
-  box-shadow: var(--shadow-hover);
+  box-shadow: 0 12px 30px rgba(121, 52, 79, 0.12);
 }
 
 .home-featured-number {
@@ -145,13 +166,13 @@
 
 .home-featured-card h3 {
   margin: 15px 0 8px;
-  color: var(--color-primary);
+  color: #79344f;
   font-size: 1.5rem;
 }
 
 .home-featured-card p {
   margin: 0 0 22px;
-  color: var(--color-text);
+  color: #65535d;
   font-size: 0.88rem;
   line-height: 1.8;
 }
@@ -175,7 +196,7 @@
   border: 1px solid #e7c6d2;
   border-radius: 999px;
   background: white;
-  color: var(--color-primary);
+  color: #79344f;
   font-size: 0.86rem;
   font-weight: 600;
   text-decoration: none;
@@ -271,6 +292,7 @@
   background: white;
   color: #79344f;
   text-align: left;
+  cursor: pointer;
   transition:
     border-color 0.2s ease,
     background 0.2s ease,
@@ -323,6 +345,7 @@
   font-size: 0.78rem;
   text-decoration: underline;
   text-underline-offset: 3px;
+  cursor: pointer;
 }
 
 .visitor-modal-skip:hover {
@@ -373,6 +396,7 @@
   background: transparent;
   color: #988a91;
   font-size: 1.5rem;
+  cursor: pointer;
 }
 
 .visitor-reminder-close:hover {
@@ -420,13 +444,15 @@
    6. RESPONSIVE
    ======================================== */
 
-@media (max-width: 1100px) {
-  .site-header .nav-links {
-    gap: 16px;
+@media (max-width: 1200px) {
+  .site-header .nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px 30px;
   }
 
-  .site-header .visitor-navbar-switch button {
-    padding: 8px 10px;
+  .site-header .nav-links {
+    gap: 18px;
   }
 }
 
@@ -446,12 +472,14 @@
 }
 
 @media (max-width: 768px) {
-  .site-header .visitor-navbar-switch {
-    order: 1;
+  .site-header .nav-brand-group {
+    width: 100%;
+    justify-content: center;
+    gap: 12px;
   }
 
-  .site-header .language-switcher {
-    order: 2;
+  .site-header .nav-links {
+    justify-content: center;
   }
 
   .home-featured-projects {
@@ -461,15 +489,20 @@
   .visitor-modal {
     padding: 35px 22px 27px;
   }
+
+  .site-header .visitor-navbar-switch button {
+    padding: 8px 10px;
+    font-size: 0.72rem;
+  }
 }
 
 @media (max-width: 480px) {
-  .site-header .visitor-navbar-switch button {
-    padding: 8px;
-    font-size: 0.72rem;
+  .site-header .nav-brand-group {
+    gap: 10px;
   }
 
-  .site-header .visitor-navbar-switch button span {
+  .site-header .visitor-navbar-switch button {
+    padding: 8px;
     font-size: 0.7rem;
   }
 

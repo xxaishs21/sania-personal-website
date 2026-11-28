@@ -32,7 +32,7 @@ export default function Home() {
     }
   }, [showWelcome])
 
-  // Suggest projects after 3 minutes on Home in recruiter mode.
+  // Suggest projects after 45 seconds on Home in recruiter mode.
   useEffect(() => {
     setShowReminder(false)
 
@@ -56,7 +56,7 @@ export default function Home() {
       }
 
       setShowReminder(true)
-    }, 180000)
+    }, 45000)
 
     return () => window.clearTimeout(timeout)
   }, [isRecruiter, showWelcome])
