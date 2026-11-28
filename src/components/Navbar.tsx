@@ -1,10 +1,18 @@
 
 import { NavLink } from 'react-router-dom'
 import { useLanguage } from '../LanguageContext'
+import {
+  setVisitorMode,
+  useVisitorMode
+} from '../VisitorMode'
+import '../../VisitorMode.css'
 
 export default function Navbar() {
   const { language, setLanguage } = useLanguage()
   const fr = language === 'fr'
+
+  const visitorMode = useVisitorMode()
+  const isRecruiter = visitorMode === 'recruiter'
 
   return (
     <header className="site-header">
@@ -39,9 +47,49 @@ export default function Navbar() {
           </NavLink>
 
           <div
+            className="visitor-navbar-switch"
+            role="group"
+            aria-label={
+              fr
+                ? 'Choisir le mode de visite'
+                : 'Choose visitor mode'
+            }
+          >
+            <button
+              type="button"
+              className={!isRecruiter ? 'active' : ''}
+              onClick={() => setVisitorMode('visitor')}
+              aria-pressed={!isRecruiter}
+              title={
+                fr
+                  ? 'Mode Découverte'
+                  : 'Discovery mode'
+              }
+            >
+              ♡ <span>{fr ? 'Découverte' : 'Discover'}</span>
+            </button>
+
+            <button
+              type="button"
+              className={isRecruiter ? 'active' : ''}
+              onClick={() => setVisitorMode('recruiter')}
+              aria-pressed={isRecruiter}
+              title={
+                fr
+                  ? 'Mode Recruteur'
+                  : 'Recruiter mode'
+              }
+            >
+              💼 <span>{fr ? 'Recruteur' : 'Recruiter'}</span>
+            </button>
+          </div>
+
+          <div
             className="language-switcher"
             role="group"
-            aria-label={fr ? 'Choisir la langue' : 'Choose language'}
+            aria-label={
+              fr ? 'Choisir la langue' : 'Choose language'
+            }
           >
             <button
               type="button"

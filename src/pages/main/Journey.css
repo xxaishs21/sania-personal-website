@@ -375,6 +375,66 @@
 }
 
 /* ========================================
+   EDUCATION — UNIFORM CARD SIZE
+   ======================================== */
+
+/*
+  All Education cards use the standard layout,
+  even when compact: true is set in Journey.tsx.
+*/
+
+.journey-education .journey-card,
+.journey-education.journey-entry-compact .journey-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 195px;
+  padding: 22px 24px 18px;
+  border-top-width: 3px;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(121, 52, 79, 0.035);
+}
+
+.journey-education.journey-entry-compact .journey-card-meta {
+  margin-bottom: 15px;
+}
+
+.journey-education.journey-entry-compact .journey-card h2 {
+  margin-bottom: 9px;
+  font-size: clamp(1.3rem, 1.7vw, 1.6rem);
+}
+
+.journey-education.journey-entry-compact .journey-subtitle {
+  margin-bottom: 17px;
+  font-size: 0.83rem;
+  line-height: 1.65;
+}
+
+.journey-education.journey-entry-compact .journey-node {
+  top: 27px;
+}
+
+.journey-education .journey-expand-button,
+.journey-education.journey-entry-compact .journey-expand-button {
+  margin-top: auto;
+  padding-top: 12px;
+  font-size: 0.79rem;
+}
+
+.journey-education.journey-entry-compact .journey-expand-symbol {
+  width: 24px;
+  height: 24px;
+  font-size: 1.1rem;
+}
+
+.journey-education.journey-entry-compact {
+  margin-bottom: 31px;
+}
+
+.journey-education .journey-card:hover {
+  box-shadow: 0 9px 25px rgba(121, 52, 79, 0.075);
+}
+
+/* ========================================
    EXPAND BUTTON
    ======================================== */
 
@@ -622,6 +682,17 @@
   .journey-card {
     padding: 20px;
   }
+
+  /* Education cards stay consistent on mobile */
+
+  .journey-education .journey-card,
+  .journey-education.journey-entry-compact .journey-card {
+    padding: 20px;
+  }
+
+  .journey-education.journey-entry-compact {
+    margin-bottom: 25px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -649,6 +720,21 @@
 
   .journey-entry-compact .journey-card {
     padding: 14px 15px 11px;
+  }
+
+  /* Education cards retain standard typography */
+
+  .journey-education .journey-card,
+  .journey-education.journey-entry-compact .journey-card {
+    padding: 18px 16px 15px;
+  }
+
+  .journey-education.journey-entry-compact .journey-card h2 {
+    font-size: 1.3rem;
+  }
+
+  .journey-education.journey-entry-compact .journey-subtitle {
+    font-size: 0.79rem;
   }
 }
 
